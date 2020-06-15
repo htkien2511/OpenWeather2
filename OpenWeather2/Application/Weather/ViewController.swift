@@ -23,7 +23,11 @@ class ViewController: UIViewController {
         print(error!)
       }
       else {
-        print(response!)
+        //print(response!.city.name)
+        DispatchQueue.main.async {
+          
+        }
+        
       }
     }
   }

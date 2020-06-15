@@ -17,7 +17,7 @@ enum DataManagerError: Error {
 
 class DataManager {
   
-  typealias WeatherDataCompletion = (AnyObject?, DataManagerError?) -> ()
+  typealias WeatherDataCompletion = (DataStructures?, DataManagerError?) -> ()
   
   let baseURL: URL
   
@@ -32,7 +32,7 @@ class DataManager {
     let url = URL(string: "\(baseURL)&q=\(city)")
     guard let safeURL = url else { return }
     
-    // MARK: - Fetch Data
+    // MARK: - Request URL
     URLSession.shared.dataTask(with: safeURL) {
       (data, response, error) in
       self.didFetchWeatherData(data: data,
@@ -66,12 +66,20 @@ class DataManager {
     }
   }
   
+  // MARK: - Parse JSON Data to DataStructures
   private func processWeatherData(data: Data,
                                   completion: @escaping WeatherDataCompletion) {
-    if let JSON = try? JSONSerialization.jsonObject(with: data, options: []) as AnyObject {
-      completion(JSON, nil)
-    }
-    else {
+    do {
+      let decoder = JSONDecoder()
+      
+      // MARK: - Change date format for parsing date from JSON Data
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+      decoder.dateDecodingStrategy = .formatted(dateFormatter)
+      
+      let dataStructures = try decoder.decode(DataStructures.self, from: data)
+      completion(dataStructures, nil)
+    } catch {
       completion(nil, .InvalidResponse)
     }
   }
