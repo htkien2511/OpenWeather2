@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -112,12 +113,39 @@
                                 <rect key="frame" x="0.0" y="133.66666666666669" width="414" height="618.66666666666652"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KyI-PP-GI4">
-                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="itemSize" width="414" height="618.66666666666652"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="Cell" id="gXa-00-h3v" customClass="WeatherCollectionViewCell" customModule="OpenWeather2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="618.66666666666652"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Sgx-kJ-eYf">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="618.66666666666652"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VfW-XX-yZZ">
+                                                    <rect key="frame" x="7" y="109.33333333333331" width="400" height="400"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="400" id="A12-jM-hUF"/>
+                                                        <constraint firstAttribute="width" constant="400" id="hgC-qJ-Itr"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="VfW-XX-yZZ" firstAttribute="centerY" secondItem="Sgx-kJ-eYf" secondAttribute="centerY" id="RNm-ut-nQj"/>
+                                                <constraint firstItem="VfW-XX-yZZ" firstAttribute="centerX" secondItem="Sgx-kJ-eYf" secondAttribute="centerX" id="XlG-xd-0ZT"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="414" height="618.66666666666652"/>
+                                        <connections>
+                                            <outlet property="square" destination="VfW-XX-yZZ" id="gJn-9W-ehU"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="9jx-1Q-9JG"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="LqG-FM-0kG"/>
