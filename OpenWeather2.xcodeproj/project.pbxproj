@@ -18,6 +18,7 @@
 		7B3D7E1224971D44007A44F2 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3D7E1124971D44007A44F2 /* DataManager.swift */; };
 		7B3D7E1424971D5D007A44F2 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3D7E1324971D5D007A44F2 /* API.swift */; };
 		7B3D7E1624975230007A44F2 /* DataStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3D7E1524975230007A44F2 /* DataStructures.swift */; };
+		7B3D7E18249778BC007A44F2 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3D7E17249778BC007A44F2 /* WeatherViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		7B3D7E1124971D44007A44F2 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		7B3D7E1324971D5D007A44F2 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		7B3D7E1524975230007A44F2 /* DataStructures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructures.swift; sourceTree = "<group>"; };
+		7B3D7E17249778BC007A44F2 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 			children = (
 				7B3D7DEA24971B71007A44F2 /* Main.storyboard */,
 				7B3D7DE824971B71007A44F2 /* ViewController.swift */,
+				7B3D7E17249778BC007A44F2 /* WeatherViewController.swift */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				7B3D7E1224971D44007A44F2 /* DataManager.swift in Sources */,
 				7B3D7DEF24971B71007A44F2 /* OpenWeather2.xcdatamodeld in Sources */,
 				7B3D7DE524971B71007A44F2 /* AppDelegate.swift in Sources */,
+				7B3D7E18249778BC007A44F2 /* WeatherViewController.swift in Sources */,
 				7B3D7E1424971D5D007A44F2 /* API.swift in Sources */,
 				7B3D7DE724971B71007A44F2 /* SceneDelegate.swift in Sources */,
 			);
