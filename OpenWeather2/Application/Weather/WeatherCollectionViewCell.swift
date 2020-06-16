@@ -10,5 +10,5 @@ import UIKit
 
 class WeatherCollectionViewCell: UICollectionViewCell {
     
-  @IBOutlet weak var square: UIView!
+  @IBOutlet weak var weatherGerenal: UIView!
 }
