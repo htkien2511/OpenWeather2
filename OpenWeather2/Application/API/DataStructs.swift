@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: - Weather
-struct DataStructures: Codable {
+struct DataStructs: Codable {
   let list: [List]
   let city: City
 }

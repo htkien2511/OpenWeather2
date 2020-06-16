@@ -17,7 +17,7 @@ enum DataManagerError: Error {
 
 class DataManager {
   
-  typealias WeatherDataCompletion = (DataStructures?, DataManagerError?) -> ()
+  typealias WeatherDataCompletion = (DataStructs?, DataManagerError?) -> ()
   
   let baseURL: URL
   
@@ -77,8 +77,8 @@ class DataManager {
       dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
       decoder.dateDecodingStrategy = .formatted(dateFormatter)
       
-      let dataStructures = try decoder.decode(DataStructures.self, from: data)
-      completion(dataStructures, nil)
+      let dataStruct = try decoder.decode(DataStructs.self, from: data)
+      completion(dataStruct, nil)
     } catch {
       completion(nil, .InvalidResponse)
     }
