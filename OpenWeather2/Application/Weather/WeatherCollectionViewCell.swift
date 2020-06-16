@@ -11,4 +11,10 @@ import UIKit
 class WeatherCollectionViewCell: UICollectionViewCell {
     
   @IBOutlet weak var weatherGerenal: UIView!
+  @IBAction func everyHourButtonTapped(_ sender: Any) {
+    print("every hour tapped")
+  }
+  @IBAction func everyDayButtonTapped(_ sender: Any) {
+    print("every day tapped")
+  }
 }
