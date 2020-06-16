@@ -12,31 +12,67 @@ private let reuseIdentifier = "Cell"
 
 class WeatherViewController: UIViewController {
   
+  // MARK: - Properties
   private var items: [DataStructures] = []
   
+  
+  // MARK: -
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    
+  }
+  
+  // MARK: - Action
+  @IBAction func addCityButtonTapped(_ sender: Any) {
   }
 }
 
+// MARK: - Collection View Data Source
 extension WeatherViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 3//items.count
+    // API khong kip tra ve nen items.count = 0 => failed
+    return items.count < 1 ? 1 : items.count
   }
   
   func collectionView(_ collectionView: UICollectionView,
                       cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                   for: indexPath) as! WeatherCollectionViewCell
-    //cell.weatherGerenal.backgroundColor = .red
+    loadDataFromAPI(cell, indexPath: indexPath)
+    
     return cell
   }
   
+  // MARK: - Helper Method
+  func loadDataFromAPI(_ cell: WeatherCollectionViewCell, indexPath: IndexPath) {
+    let dataManager = DataManager(baseURL: API.AuthenticatedBaseURL)
+    dataManager.weatherDataForLocation(city: "Hue") { (data, error) in
+      if let _ = error {
+        print(error!)
+      }
+      else {
+        self.items.append(data!)
+        DispatchQueue.main.async {
+          self.setUpWeather(cell, indexPath: indexPath)
+          
+        }
+      }
+    }
+  }
+  
+  func setUpWeather(_ cell: WeatherCollectionViewCell, indexPath: IndexPath) {
+    cell.cityLabel.text = String("\(self.items[indexPath.item].city.name)")
+    cell.temperatureLabel.text = String("\(Int(self.items[indexPath.item].list[1].main.temp - 273))")
+    cell.weatherDescriptionLabel.text = String("\(self.items[indexPath.item].list[1].weather[0].weatherDescription)")
+  }
 }
 
+// MARK: - Collecion View Delegate Flow Layout
 extension WeatherViewController: UICollectionViewDelegateFlowLayout {
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+  func collectionView(_ collectionView: UICollectionView,
+                      layout collectionViewLayout: UICollectionViewLayout,
+                      sizeForItemAt indexPath: IndexPath) -> CGSize {
     return collectionView.frame.size
   }
   
