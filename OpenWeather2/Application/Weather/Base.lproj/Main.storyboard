@@ -508,7 +508,28 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="414" height="618.66666666666652"/>
                                         <connections>
-                                            <outlet property="weatherGerenal" destination="Fp5-ma-mmH" id="OF4-Vr-uxr"/>
+                                            <outlet property="cityLabel" destination="kOV-me-IO9" id="cId-mz-2G4"/>
+                                            <outlet property="iconImageView" destination="do0-S2-Kd9" id="MwZ-x0-Rf4"/>
+                                            <outlet property="temperatureLabel" destination="aYs-ZV-3fw" id="mJp-8D-l1x"/>
+                                            <outlet property="weatherDescriptionLabel" destination="7T9-tc-QAr" id="YrR-aI-Ucv"/>
+                                            <outletCollection property="tempDetailArray" destination="dW7-gv-wzF" collectionClass="NSMutableArray" id="6OX-gr-RJq"/>
+                                            <outletCollection property="tempDetailArray" destination="ojv-qf-nMX" collectionClass="NSMutableArray" id="mxA-8L-dac"/>
+                                            <outletCollection property="tempDetailArray" destination="thz-ug-TES" collectionClass="NSMutableArray" id="nSF-Sj-Jfg"/>
+                                            <outletCollection property="tempDetailArray" destination="YRY-bW-yKA" collectionClass="NSMutableArray" id="ugb-t0-kiB"/>
+                                            <outletCollection property="tempDetailArray" destination="tDt-cg-E1B" collectionClass="NSMutableArray" id="zSc-iU-eNM"/>
+                                            <outletCollection property="tempDetailArray" destination="C1i-V9-Mik" collectionClass="NSMutableArray" id="e7y-By-hCi"/>
+                                            <outletCollection property="iconDetailArray" destination="PZl-fK-O7N" collectionClass="NSMutableArray" id="9eN-m2-Kxo"/>
+                                            <outletCollection property="iconDetailArray" destination="gwV-4o-WnS" collectionClass="NSMutableArray" id="eno-Gn-e1x"/>
+                                            <outletCollection property="iconDetailArray" destination="ROa-hQ-rUE" collectionClass="NSMutableArray" id="Twm-kW-kd3"/>
+                                            <outletCollection property="iconDetailArray" destination="QNC-5p-tKn" collectionClass="NSMutableArray" id="MFf-bp-feO"/>
+                                            <outletCollection property="iconDetailArray" destination="g1C-cG-PnE" collectionClass="NSMutableArray" id="vQt-sp-E3T"/>
+                                            <outletCollection property="iconDetailArray" destination="ja4-4R-Qar" collectionClass="NSMutableArray" id="FWV-aX-ISt"/>
+                                            <outletCollection property="dayDetailArray" destination="Joa-z2-EFQ" collectionClass="NSMutableArray" id="agF-u7-oq5"/>
+                                            <outletCollection property="dayDetailArray" destination="ufg-Aq-zAr" collectionClass="NSMutableArray" id="hLs-AM-7fI"/>
+                                            <outletCollection property="dayDetailArray" destination="9de-8F-eKa" collectionClass="NSMutableArray" id="gZ7-2v-X3K"/>
+                                            <outletCollection property="dayDetailArray" destination="S51-pY-xXr" collectionClass="NSMutableArray" id="odW-xB-KbE"/>
+                                            <outletCollection property="dayDetailArray" destination="XUm-Za-FIB" collectionClass="NSMutableArray" id="DYq-QX-LAp"/>
+                                            <outletCollection property="dayDetailArray" destination="SuT-IN-jNX" collectionClass="NSMutableArray" id="XGl-pY-bEx"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
