@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 private let reuseIdentifier = "Cell"
 
 class WeatherViewController: UIViewController {
   
   // MARK: - Properties
-  private var items: [DataStructures] = []
+  private var items: [NSManagedObject] = []
   
   
   // MARK: -
@@ -52,19 +53,25 @@ extension WeatherViewController: UICollectionViewDataSource {
         print(error!)
       }
       else {
-        self.items.append(data!)
+        //self.items.append(data!)
         DispatchQueue.main.async {
-          self.setUpWeather(cell, indexPath: indexPath)
           
+          let id = data!.city.id
+          let city = data!.city.name
+          let date = Date()
+          let weather = CoreDataManager.sharedManager.insertWeather(id: id, city: city, updatedDate: date)
+          self.items.append(weather!)
+          print(self.items)
+          self.setUpWeather(cell, indexPath: indexPath)
         }
       }
     }
   }
   
   func setUpWeather(_ cell: WeatherCollectionViewCell, indexPath: IndexPath) {
-    cell.cityLabel.text = String("\(self.items[indexPath.item].city.name)")
-    cell.temperatureLabel.text = String("\(Int(self.items[indexPath.item].list[1].main.temp - 273))")
-    cell.weatherDescriptionLabel.text = String("\(self.items[indexPath.item].list[1].weather[0].weatherDescription)")
+    cell.cityLabel.text = items[indexPath.item].value(forKeyPath: "cityName") as? String
+//    cell.temperatureLabel.text = String("\(Int(self.items[indexPath.item].list[1].main.temp - 273))")
+//    cell.weatherDescriptionLabel.text = String("\(self.items[indexPath.item].list[1].weather[0].weatherDescription)")
   }
 }
 
