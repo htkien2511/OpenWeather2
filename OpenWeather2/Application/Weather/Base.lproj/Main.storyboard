@@ -25,6 +25,9 @@
                                         <state key="normal" title="   Add   ">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addCityButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AZZ-Pu-WWR"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jf3-B2-Nsb">
                                         <rect key="frame" x="205" y="13.333333333333339" width="91" height="62.666666666666657"/>

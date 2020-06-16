@@ -19,6 +19,7 @@
 		7B3D7E1624975230007A44F2 /* DataStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3D7E1524975230007A44F2 /* DataStructures.swift */; };
 		7B3D7E18249778BC007A44F2 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3D7E17249778BC007A44F2 /* WeatherViewController.swift */; };
 		7B3D7E1A24977D2A007A44F2 /* WeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3D7E1924977D2A007A44F2 /* WeatherCollectionViewCell.swift */; };
+		7BC55E742498A88200C623F2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC55E732498A88200C623F2 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		7B3D7E1524975230007A44F2 /* DataStructures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructures.swift; sourceTree = "<group>"; };
 		7B3D7E17249778BC007A44F2 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		7B3D7E1924977D2A007A44F2 /* WeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCollectionViewCell.swift; sourceTree = "<group>"; };
+		7BC55E732498A88200C623F2 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				7B3D7DED24971B71007A44F2 /* OpenWeather2.xcdatamodeld */,
+				7BC55E732498A88200C623F2 /* CoreDataManager.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				7B3D7DEF24971B71007A44F2 /* OpenWeather2.xcdatamodeld in Sources */,
 				7B3D7DE524971B71007A44F2 /* AppDelegate.swift in Sources */,
 				7B3D7E18249778BC007A44F2 /* WeatherViewController.swift in Sources */,
+				7BC55E742498A88200C623F2 /* CoreDataManager.swift in Sources */,
 				7B3D7E1424971D5D007A44F2 /* API.swift in Sources */,
 				7B3D7DE724971B71007A44F2 /* SceneDelegate.swift in Sources */,
 			);
