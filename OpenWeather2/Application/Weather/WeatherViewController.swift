@@ -21,7 +21,13 @@ class WeatherViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    
+    loadLocalData()
+  }
+  
+  func loadLocalData() {
+    if CoreDataManager.sharedManager.fetchAllWeatherCities() != nil {
+      items = CoreDataManager.sharedManager.fetchAllWeatherCities()!
+    }
   }
   
   // MARK: - Action
