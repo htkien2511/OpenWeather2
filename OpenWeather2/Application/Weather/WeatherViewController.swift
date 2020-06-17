@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 private let reuseIdentifier = "Cell"
 
@@ -46,7 +45,7 @@ extension WeatherViewController: UICollectionViewDataSource {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                   for: indexPath) as! WeatherCollectionViewCell
     loadDataFromAPI(cell, indexPath: indexPath)
-    
+    cell.delegate = self
     return cell
   }
   
@@ -107,6 +106,15 @@ extension WeatherViewController: UICollectionViewDelegateFlowLayout {
                       sizeForItemAt indexPath: IndexPath) -> CGSize {
     return collectionView.frame.size
   }
-  
-  
+}
+
+// MARK: - Protocol Delegate
+extension WeatherViewController: ChangeButton {
+  func isEveryDayTapped(_ isTapped: Bool) {
+    if isTapped {
+      print("Every Day Tapped")
+    } else {
+      print("Every Hour Tapped")
+    }
+  }
 }

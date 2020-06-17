@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ChangeButton: class {
+  func isEveryDayTapped(_ isTapped: Bool)
+}
+
 class WeatherCollectionViewCell: UICollectionViewCell {
   
   // MARK: - Outlet
@@ -16,6 +20,8 @@ class WeatherCollectionViewCell: UICollectionViewCell {
   @IBOutlet weak var temperatureLabel: UILabel!
   @IBOutlet weak var weatherDescriptionLabel: UILabel!
   
+  weak var delegate: ChangeButton?
+  
   // MARK: - Outlet Detail Weather
   @IBOutlet var tempDetailArray: Array<UILabel>?
   @IBOutlet var iconDetailArray: Array<UIImageView>?
@@ -23,9 +29,10 @@ class WeatherCollectionViewCell: UICollectionViewCell {
   
   // MARK: - Action
   @IBAction func everyHourButtonTapped(_ sender: Any) {
-    print("every hour tapped")
+    delegate?.isEveryDayTapped(false)
+    
   }
   @IBAction func everyDayButtonTapped(_ sender: Any) {
-    print("every day tapped")
+    delegate?.isEveryDayTapped(true)
   }
 }
