@@ -48,8 +48,6 @@ class WeatherViewController: UIViewController {
   }
   
   private func getCurrentIndex() -> Int {
-    print(collectionView.contentOffset.x)
-    print(collectionView.frame.width)
     return Int(collectionView.contentOffset.x / collectionView.frame.width)
   }
   
