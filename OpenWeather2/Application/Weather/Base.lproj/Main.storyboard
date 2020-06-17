@@ -27,6 +27,7 @@
                                         </state>
                                         <connections>
                                             <action selector="addCityButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AZZ-Pu-WWR"/>
+                                            <segue destination="YqD-QV-DfE" kind="show" id="MFW-ev-9X2"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jf3-B2-Nsb">
@@ -35,6 +36,9 @@
                                         <state key="normal" title="   City   ">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="hEY-Ad-MRK" kind="show" id="rcY-ZW-hgb"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -63,6 +67,9 @@
                                             <constraint firstAttribute="width" secondItem="HBV-Dw-ROX" secondAttribute="height" multiplier="1:1" id="H3u-FS-c3O"/>
                                         </constraints>
                                         <state key="normal" image="icon-restart"/>
+                                        <connections>
+                                            <action selector="refreshButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nl3-e7-9Va"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00/00/0000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggh-EP-c5g">
                                         <rect key="frame" x="212.33333333333334" y="11.999999999999998" width="93.333333333333343" height="20.333333333333329"/>
@@ -651,6 +658,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="120.53571428571428"/>
+        </scene>
+        <!--AllCities-->
+        <scene sceneID="IlX-d8-ZVf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AllCities" id="hEY-Ad-MRK" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ISr-r6-DcE"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pbE-M0-60B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="785" y="31"/>
+        </scene>
+        <!--AddCity-->
+        <scene sceneID="cMd-1Z-gbk">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddCity" id="YqD-QV-DfE" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="v6N-Pz-c8X"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8D0-J3-Lng" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="786" y="224"/>
         </scene>
     </scenes>
     <resources>

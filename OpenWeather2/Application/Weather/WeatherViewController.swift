@@ -52,22 +52,25 @@ class WeatherViewController: UIViewController {
   }
   
   // MARK: - Action
+  @IBAction func refreshButtonTapped(_ sender: Any) {
+    print("Refresh Tapped")
+  }
   @IBAction func addCityButtonTapped(_ sender: Any) {
-    addCity() { (city) in
-      let dataManager = DataManager(baseURL: API.AuthenticatedBaseURL)
-      dataManager.weatherDataForLocation(city: city) { (data, error) in
-        if let _ = error {
-          print(error!)
-        }
-        else {
-          DispatchQueue.main.async {
-            self.items.append(data!)
-            self.setUpPageControl()
-            self.collectionView.reloadData()
-          }
-        }
-      }
-    }
+//    addCity() { (city) in
+//      let dataManager = DataManager(baseURL: API.AuthenticatedBaseURL)
+//      dataManager.weatherDataForLocation(city: city) { (data, error) in
+//        if let _ = error {
+//          print(error!)
+//        }
+//        else {
+//          DispatchQueue.main.async {
+//            self.items.append(data!)
+//            self.setUpPageControl()
+//            self.collectionView.reloadData()
+//          }
+//        }
+//      }
+//    }
   }
   
   func addCity(completion: @escaping (_ city: String) -> ()) {
