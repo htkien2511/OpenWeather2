@@ -55,35 +55,66 @@ class WeatherViewController: UIViewController {
   @IBAction func refreshButtonTapped(_ sender: Any) {
     print("Refresh Tapped")
   }
+  
   @IBAction func addCityButtonTapped(_ sender: Any) {
-//    addCity() { (city) in
-//      let dataManager = DataManager(baseURL: API.AuthenticatedBaseURL)
-//      dataManager.weatherDataForLocation(city: city) { (data, error) in
-//        if let _ = error {
-//          print(error!)
-//        }
-//        else {
-//          DispatchQueue.main.async {
-//            self.items.append(data!)
-//            self.setUpPageControl()
-//            self.collectionView.reloadData()
-//          }
-//        }
-//      }
-//    }
+    addCity() { (city) in
+      let dataManager = DataManager(baseURL: API.AuthenticatedBaseURL)
+      dataManager.weatherDataForLocation(city: city) { (data, error) in
+        if let _ = error {
+          DispatchQueue.main.async {
+            self.showMessage(error: error!)
+          }
+        }
+        else {
+          DispatchQueue.main.async {
+            self.showAlert(message: "SUCCESS")
+            self.items.append(data!)
+            self.setUpPageControl()
+            self.collectionView.reloadData()
+          }
+        }
+      }
+    }
   }
   
+  // MARK: - Add alert for entering city name
   func addCity(completion: @escaping (_ city: String) -> ()) {
     let alertController = UIAlertController(title: "Title", message: "", preferredStyle: .alert)
     alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { alert -> Void in
       let textField = alertController.textFields![0] as UITextField
-      completion(textField.text!)
+      var city = textField.text!
+      while city.contains(" ") {
+        city.removeAll { (char) -> Bool in
+          char == " "
+        }
+      }
+      completion(city)
     }))
     alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
     alertController.addTextField(configurationHandler: {(textField : UITextField!) -> Void in
       textField.placeholder = "Search"
     })
     self.present(alertController, animated: true, completion: nil)
+  }
+  
+  // MARK: - Show alert response users
+  func showMessage(error: DataManagerError) {
+    switch error {
+    case .InvalidResponse:
+      showAlert(message: "Invalid Response")
+    case .FailedRequest:
+      showAlert(message: "Failed Request")
+    case .CityNotFound:
+      showAlert(message: "City Not Found")
+    default:
+      showAlert(message: "Unknown Error")
+    }
+  }
+  
+  func showAlert(message: String) {
+    let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    self.present(alert, animated: true, completion: nil)
   }
 }
 

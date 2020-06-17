@@ -101,6 +101,7 @@
 		7B3D7DE324971B71007A44F2 /* OpenWeather2 */ = {
 			isa = PBXGroup;
 			children = (
+				7B626CAD249A164D0020B419 /* Model */,
 				7B3D7E0924971B84007A44F2 /* Application */,
 				7B3D7E0D24971BCA007A44F2 /* Assets */,
 				7B3D7E0F24971BE1007A44F2 /* CoreData */,
@@ -189,9 +190,16 @@
 			children = (
 				7B3D7E1124971D44007A44F2 /* DataManager.swift */,
 				7B3D7E1324971D5D007A44F2 /* API.swift */,
-				7B3D7E1524975230007A44F2 /* DataStructs.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		7B626CAD249A164D0020B419 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7B3D7E1524975230007A44F2 /* DataStructs.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		7BC4CF2D2499A6D300C31F80 /* HelperMethod */ = {

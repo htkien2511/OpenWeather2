@@ -27,7 +27,6 @@
                                         </state>
                                         <connections>
                                             <action selector="addCityButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AZZ-Pu-WWR"/>
-                                            <segue destination="YqD-QV-DfE" kind="show" id="MFW-ev-9X2"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jf3-B2-Nsb">
