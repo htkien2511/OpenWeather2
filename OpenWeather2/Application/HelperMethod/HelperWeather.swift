@@ -36,7 +36,7 @@ class HelperWeather {
     for i in lastedIndex ..< lastedIndex+6 {
       next6TimesHour[i] = dateFormatter.string(from: data.list[i].date)
     }
-    print(next6TimesHour)
+    
     return next6TimesHour
   }
   

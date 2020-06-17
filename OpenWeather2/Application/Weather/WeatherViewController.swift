@@ -69,17 +69,21 @@ extension WeatherViewController: UICollectionViewDataSource {
   }
   
   func setUpWeather(_ cell: WeatherCollectionViewCell, indexPath: IndexPath) {
+    let currentIndex = HelperWeather.getLastedIndex(data: items[indexPath.item]) + 1
+    
     cell.cityLabel.text = String("\(self.items[indexPath.item].city.name)")
-    cell.temperatureLabel.text = String("\(Int(self.items[indexPath.item].list[1].main.temp - 273))")
-    cell.weatherDescriptionLabel.text = String("\(self.items[indexPath.item].list[1].weather[0].weatherDescription)")
+    cell.temperatureLabel.text = String("\(Int(self.items[indexPath.item].list[currentIndex].main.temp - 273))")
+    cell.weatherDescriptionLabel.text = String("\(self.items[indexPath.item].list[currentIndex].weather[0].weatherDescription)")
+    cell.iconImageView.image = UIImage(named: self.items[indexPath.item].list[currentIndex].weather[0].icon)
   }
   
   func setUpEveryWeather(_ cell: WeatherCollectionViewCell, indexPath: IndexPath) {
     let detailEveryHour = HelperWeather.getWeatherEveryHour(data: items[indexPath.item])
-    
+    let lastedIndex = HelperWeather.getLastedIndex(data: items[indexPath.item])
     for i in 0..<6 {
-      cell.tempDetailArray![i].text = String("\(Int(self.items[indexPath.item].list[i+2].main.temp - 273))")
-      cell.dayDetailArray![i].text = detailEveryHour[i+2]
+      cell.tempDetailArray![i].text = String("\(Int(self.items[indexPath.item].list[i+lastedIndex].main.temp - 273))")
+      cell.dayDetailArray![i].text = detailEveryHour[i+lastedIndex]
+      cell.iconDetailArray![i].image = UIImage(named: self.items[indexPath.item].list[i+lastedIndex].weather[0].icon)
     }
   }
   
