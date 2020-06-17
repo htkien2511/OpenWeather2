@@ -13,22 +13,21 @@ private let reuseIdentifier = "Cell"
 
 class WeatherViewController: UIViewController {
   
+  // MARK: - Outlet
+  @IBOutlet weak var updatedDayLabel: UILabel!
+  @IBOutlet weak var updatedTimeLabel: UILabel!
+  
   // MARK: - Properties
-  private var items: [NSManagedObject] = []
+  private var items: [DataStructs] = []
   
   
   // MARK: -
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    loadLocalData()
   }
   
-  func loadLocalData() {
-    if CoreDataManager.sharedManager.fetchAllWeatherCities() != nil {
-      items = CoreDataManager.sharedManager.fetchAllWeatherCities()!
-    }
-  }
+  
   
   // MARK: - Action
   @IBAction func addCityButtonTapped(_ sender: Any) {
@@ -59,25 +58,41 @@ extension WeatherViewController: UICollectionViewDataSource {
         print(error!)
       }
       else {
-        //self.items.append(data!)
         DispatchQueue.main.async {
-          
-          let id = data!.city.id
-          let city = data!.city.name
-          let date = Date()
-          let weather = CoreDataManager.sharedManager.insertWeather(id: id, city: city, updatedDate: date)
-          self.items.append(weather!)
-          print(self.items)
+          self.items.append(data!)
           self.setUpWeather(cell, indexPath: indexPath)
+          self.setUpEveryWeather(cell, indexPath: indexPath)
+          self.setUpdatedTime()
         }
       }
     }
   }
   
   func setUpWeather(_ cell: WeatherCollectionViewCell, indexPath: IndexPath) {
-    cell.cityLabel.text = items[indexPath.item].value(forKeyPath: "cityName") as? String
-//    cell.temperatureLabel.text = String("\(Int(self.items[indexPath.item].list[1].main.temp - 273))")
-//    cell.weatherDescriptionLabel.text = String("\(self.items[indexPath.item].list[1].weather[0].weatherDescription)")
+    cell.cityLabel.text = String("\(self.items[indexPath.item].city.name)")
+    cell.temperatureLabel.text = String("\(Int(self.items[indexPath.item].list[1].main.temp - 273))")
+    cell.weatherDescriptionLabel.text = String("\(self.items[indexPath.item].list[1].weather[0].weatherDescription)")
+  }
+  
+  func setUpEveryWeather(_ cell: WeatherCollectionViewCell, indexPath: IndexPath) {
+    let detailEveryHour = HelperWeather.getWeatherEveryHour(data: items[indexPath.item])
+    
+    for i in 0..<6 {
+      cell.tempDetailArray![i].text = String("\(Int(self.items[indexPath.item].list[i+2].main.temp - 273))")
+      cell.dayDetailArray![i].text = detailEveryHour[i+2]
+    }
+  }
+  
+  func setUpdatedTime() {
+    let currentDate = Date()
+    // get time
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "HH:mm"
+    updatedTimeLabel.text = dateFormatter.string(from: currentDate)
+    
+    // get date
+    dateFormatter.dateFormat = "dd-MM-yyyy"
+    updatedDayLabel.text = dateFormatter.string(from: currentDate)
   }
 }
 
