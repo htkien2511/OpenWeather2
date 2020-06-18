@@ -54,7 +54,21 @@ class WeatherViewController: UIViewController {
   
   // MARK: - Action
   @IBAction func refreshButtonTapped(_ sender: Any) {
-    print("Refresh Tapped")
+    let dataManager = DataManager(baseURL: API.AuthenticatedBaseURL)
+    let currentIndex = pageControl.currentPage
+    let city = items[currentIndex].city.name
+    dataManager.weatherDataForLocation(city: city) { (data, error) in
+      if let _ = error {
+        print(error!)
+      }
+      else {
+        DispatchQueue.main.async {
+          self.items[currentIndex] = data!
+          self.collectionView.reloadData()
+          self.setUpdatedTime()
+        }
+      }
+    }
   }
   
   @IBAction func addCityButtonTapped(_ sender: Any) {
