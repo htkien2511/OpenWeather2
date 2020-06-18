@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SelectedCity: class {
+  func selectedCity(indexPath: IndexPath)
+}
+
 private let reuseIdentifier = "allCitiesCell"
 
 class AllCitiesViewController: UIViewController {
@@ -17,6 +21,8 @@ class AllCitiesViewController: UIViewController {
   
   // MARK: - Properties
   var items: [DataStructs] = []
+  
+  weak var delegate: SelectedCity?
   
   // MARK: -
   override func viewDidLoad() {
@@ -56,5 +62,10 @@ extension AllCitiesViewController: UITableViewDelegate {
   // fixed heigh of row. If don't have that. Unable to simultaneously satisfy constraints.
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 80
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    self.delegate?.selectedCity(indexPath: indexPath)
+    self.dismiss(animated: true, completion: nil)
   }
 }

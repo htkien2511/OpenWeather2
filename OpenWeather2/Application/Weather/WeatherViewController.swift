@@ -20,6 +20,7 @@ class WeatherViewController: UIViewController {
   
   // MARK: - Properties
   private var items: [DataStructs] = []
+  private var currentIndexItem: Int = 0
   
   
   // MARK: -
@@ -221,6 +222,7 @@ extension WeatherViewController {
     if segue.destination is AllCitiesViewController {
       let vc = segue.destination as! AllCitiesViewController
       vc.items = items
+      vc.delegate = self
     }
   }
 }
@@ -233,5 +235,11 @@ extension WeatherViewController: ChangeButton {
     } else {
       print("Every Hour Tapped")
     }
+  }
+}
+
+extension WeatherViewController: SelectedCity {
+  func selectedCity(indexPath: IndexPath) {
+    collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
   }
 }
