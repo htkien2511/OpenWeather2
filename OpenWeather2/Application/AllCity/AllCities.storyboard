@@ -55,6 +55,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OmW-Y1-Fl4">
                                 <rect key="frame" x="0.0" y="133.5" width="414" height="728.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="uvR-ON-WhG" id="V5i-J9-Cuq"/>
+                                    <outlet property="delegate" destination="uvR-ON-WhG" id="RAX-x4-Yj6"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -70,6 +74,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="05N-mq-FSu"/>
                     </view>
+                    <connections>
+                        <outlet property="allCitiesTableView" destination="OmW-Y1-Fl4" id="2ip-Kk-0DN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DAG-2c-iFt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
