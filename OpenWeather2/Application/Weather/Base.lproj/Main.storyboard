@@ -60,30 +60,20 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBV-Dw-ROX">
-                                        <rect key="frame" x="376.66666666666669" y="10.999999999999998" width="22.333333333333314" height="22.333333333333329"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="HBV-Dw-ROX" secondAttribute="height" multiplier="1:1" id="H3u-FS-c3O"/>
-                                        </constraints>
-                                        <state key="normal" image="icon-restart"/>
-                                        <connections>
-                                            <action selector="refreshButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nl3-e7-9Va"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00/00/0000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggh-EP-c5g">
-                                        <rect key="frame" x="212.33333333333334" y="11.999999999999998" width="93.333333333333343" height="20.333333333333329"/>
+                                        <rect key="frame" x="249.66666666666666" y="11.999999999999998" width="93.333333333333343" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Updated on" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pa2-Ou-XcF">
-                                        <rect key="frame" x="112.33333333333331" y="11.999999999999998" width="90" height="20.333333333333329"/>
+                                        <rect key="frame" x="149.66666666666666" y="11.999999999999998" width="90" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGV-p6-RBz">
-                                        <rect key="frame" x="315.66666666666669" y="11.999999999999998" width="46" height="20.333333333333329"/>
+                                        <rect key="frame" x="353" y="11.999999999999998" width="46" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -91,17 +81,14 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.60392156862745094" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="HBV-Dw-ROX" firstAttribute="leading" secondItem="SGV-p6-RBz" secondAttribute="trailing" constant="15" id="ANb-t8-Gas"/>
                                     <constraint firstItem="IJQ-4B-ga2" firstAttribute="centerY" secondItem="3h6-7P-Uhm" secondAttribute="centerY" id="Bnl-PE-ey3"/>
                                     <constraint firstItem="ggh-EP-c5g" firstAttribute="leading" secondItem="Pa2-Ou-XcF" secondAttribute="trailing" constant="10" id="GgU-fF-faS"/>
                                     <constraint firstItem="Pa2-Ou-XcF" firstAttribute="centerY" secondItem="3h6-7P-Uhm" secondAttribute="centerY" id="Jem-mv-dXC"/>
                                     <constraint firstItem="ggh-EP-c5g" firstAttribute="centerY" secondItem="3h6-7P-Uhm" secondAttribute="centerY" id="UdW-Rk-lka"/>
                                     <constraint firstItem="SGV-p6-RBz" firstAttribute="centerY" secondItem="3h6-7P-Uhm" secondAttribute="centerY" id="X4d-1D-ix2"/>
                                     <constraint firstItem="SGV-p6-RBz" firstAttribute="leading" secondItem="ggh-EP-c5g" secondAttribute="trailing" constant="10" id="f6z-7g-hdr"/>
-                                    <constraint firstItem="HBV-Dw-ROX" firstAttribute="height" secondItem="3h6-7P-Uhm" secondAttribute="height" multiplier="0.5" id="gxJ-iM-L6D"/>
+                                    <constraint firstAttribute="trailing" secondItem="SGV-p6-RBz" secondAttribute="trailing" constant="15" id="k06-Zc-4yf"/>
                                     <constraint firstItem="Pa2-Ou-XcF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="IJQ-4B-ga2" secondAttribute="trailing" constant="15" id="lwC-75-yfB"/>
-                                    <constraint firstAttribute="trailing" secondItem="HBV-Dw-ROX" secondAttribute="trailing" constant="15" id="pbn-SV-c6g"/>
-                                    <constraint firstItem="HBV-Dw-ROX" firstAttribute="centerY" secondItem="3h6-7P-Uhm" secondAttribute="centerY" id="uFP-RR-rKZ"/>
                                     <constraint firstItem="IJQ-4B-ga2" firstAttribute="leading" secondItem="3h6-7P-Uhm" secondAttribute="leading" constant="15" id="x20-Bk-AR2"/>
                                 </constraints>
                             </view>
@@ -677,6 +664,5 @@
         <image name="04n" width="50" height="50"/>
         <image name="11d" width="50" height="50"/>
         <image name="13n" width="50" height="50"/>
-        <image name="icon-restart" width="30" height="30"/>
     </resources>
 </document>
