@@ -668,16 +668,6 @@
             </objects>
             <point key="canvasLocation" x="785" y="31"/>
         </scene>
-        <!--AddCity-->
-        <scene sceneID="cMd-1Z-gbk">
-            <objects>
-                <viewControllerPlaceholder storyboardName="AddCity" id="YqD-QV-DfE" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="v6N-Pz-c8X"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8D0-J3-Lng" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="786" y="224"/>
-        </scene>
     </scenes>
     <resources>
         <image name="01d" width="50" height="50"/>

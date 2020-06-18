@@ -215,6 +215,16 @@ extension WeatherViewController: UICollectionViewDelegateFlowLayout {
   }
 }
 
+// MARK: - Prepare Segue
+extension WeatherViewController {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.destination is AllCitiesViewController {
+      let vc = segue.destination as! AllCitiesViewController
+      vc.items = items
+    }
+  }
+}
+
 // MARK: - Protocol Delegate
 extension WeatherViewController: ChangeButton {
   func isEveryDayTapped(_ isTapped: Bool) {
