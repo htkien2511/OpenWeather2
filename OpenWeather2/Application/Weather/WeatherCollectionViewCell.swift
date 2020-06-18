@@ -30,6 +30,7 @@ class WeatherCollectionViewCell: UICollectionViewCell {
   @IBOutlet var tempDetailArray: Array<UILabel>?
   @IBOutlet var iconDetailArray: Array<UIImageView>?
   @IBOutlet var dayDetailArray: Array<UILabel>?
+  @IBOutlet var viewDetailArray: Array<UIView>?
   
   // MARK: - Action
   @IBAction func everyHourButtonTapped(_ sender: Any) {

@@ -620,6 +620,12 @@
                                             <outletCollection property="dayDetailArray" destination="S51-pY-xXr" collectionClass="NSMutableArray" id="odW-xB-KbE"/>
                                             <outletCollection property="dayDetailArray" destination="XUm-Za-FIB" collectionClass="NSMutableArray" id="DYq-QX-LAp"/>
                                             <outletCollection property="dayDetailArray" destination="SuT-IN-jNX" collectionClass="NSMutableArray" id="XGl-pY-bEx"/>
+                                            <outletCollection property="viewDetailArray" destination="SXY-jP-449" collectionClass="NSMutableArray" id="lrD-KL-poO"/>
+                                            <outletCollection property="viewDetailArray" destination="x0L-Nt-UB4" collectionClass="NSMutableArray" id="SA4-xa-Oeh"/>
+                                            <outletCollection property="viewDetailArray" destination="UGv-qW-6fw" collectionClass="NSMutableArray" id="A16-Rx-8cL"/>
+                                            <outletCollection property="viewDetailArray" destination="SMs-Vs-Qr7" collectionClass="NSMutableArray" id="ie6-B8-2xT"/>
+                                            <outletCollection property="viewDetailArray" destination="qer-QC-CWa" collectionClass="NSMutableArray" id="3s5-pw-SMM"/>
+                                            <outletCollection property="viewDetailArray" destination="Sgt-7h-aSk" collectionClass="NSMutableArray" id="MnB-5P-GFM"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
