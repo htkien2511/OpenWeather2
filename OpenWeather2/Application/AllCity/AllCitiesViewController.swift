@@ -16,6 +16,10 @@ protocol AddCity: class {
   func reuseAddCity()
 }
 
+protocol DeletedCity: class {
+  func deletedCity(items: [DataStructs])
+}
+
 private let reuseIdentifier = "allCitiesCell"
 
 class AllCitiesViewController: UIViewController {
@@ -28,6 +32,7 @@ class AllCitiesViewController: UIViewController {
   
   weak var selectedCityDelegate: SelectedCity?
   weak var addCityDelegate: AddCity?
+  weak var deletedCityDelegate: DeletedCity?
   
   // MARK: -
   override func viewDidLoad() {
@@ -68,17 +73,26 @@ class AllCitiesViewController: UIViewController {
   @IBAction func addButtonTapped(_ sender: Any) {
     addCityDelegate?.reuseAddCity()
   }
+  @IBAction func backButtonTapped(_ sender: Any) {
+    dismiss(animated: true, completion: nil)
+  }
   
+  @IBAction func deleteButtonTapped(_ sender: Any) {
+    allCitiesTableView.isEditing = true
+  }
 }
 
 // MARK: - Table View Data Source
 extension AllCitiesViewController: UITableViewDataSource {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView,
+                 numberOfRowsInSection section: Int) -> Int {
     return items.count
   }
   
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! AllCitiesTableViewCell
+  func tableView(_ tableView: UITableView,
+                 cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier,
+                                             for: indexPath) as! AllCitiesTableViewCell
     cell.city.text = items[indexPath.row].city.name
     cell.country.text = items[indexPath.row].city.country
     
@@ -99,5 +113,21 @@ extension AllCitiesViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     self.selectedCityDelegate?.selectedCity(indexPath: indexPath)
     self.dismiss(animated: true, completion: nil)
+  }
+  
+  func tableView(_ tableView: UITableView,
+                 trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    let delete = UIContextualAction(style: .normal, title: "Delete") { (action, view, nil) in
+      self.items.remove(at: indexPath.row)
+      self.allCitiesTableView.deleteRows(at: [indexPath], with: .automatic)
+      tableView.reloadData()
+      self.deletedCityDelegate?.deletedCity(items: self.items)
+    }
+    delete.backgroundColor = #colorLiteral(red: 0, green: 0.6039215686, blue: 0.7803921569, alpha: 1)
+    delete.image = #imageLiteral(resourceName: "trash")
+    let config = UISwipeActionsConfiguration(actions: [delete])
+    config.performsFirstActionWithFullSwipe = false
+    // if it has 1 city. can't delete
+    return items.count > 1 ? config : nil
   }
 }

@@ -18,15 +18,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0V-M2-FNG" userLabel="HeaderView">
                                 <rect key="frame" x="0.0" y="44" width="414" height="89.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0vM-no-0Pb">
-                                        <rect key="frame" x="271" y="13.5" width="123" height="62.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <state key="normal" title="   Delete   ">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKX-VE-gT2">
-                                        <rect key="frame" x="173" y="13.5" width="93" height="62.5"/>
+                                        <rect key="frame" x="301" y="21" width="93" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="   Add   ">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -40,6 +33,9 @@
                                         <state key="normal" image="back">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="backButtonTapped:" destination="uvR-ON-WhG" eventType="touchUpInside" id="s7u-oa-Eq4"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.69411764705882351" blue="0.89411764705882346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -47,12 +43,8 @@
                                     <constraint firstItem="Nky-Wf-EYK" firstAttribute="leading" secondItem="Y0V-M2-FNG" secondAttribute="leading" constant="20" id="7j7-M1-gv9"/>
                                     <constraint firstItem="bKX-VE-gT2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Nky-Wf-EYK" secondAttribute="trailing" constant="20" id="GBE-2D-WQ3"/>
                                     <constraint firstItem="Nky-Wf-EYK" firstAttribute="centerY" secondItem="Y0V-M2-FNG" secondAttribute="centerY" id="JMg-fQ-XtX"/>
-                                    <constraint firstItem="bKX-VE-gT2" firstAttribute="height" secondItem="0vM-no-0Pb" secondAttribute="height" id="PVk-pi-VXF"/>
-                                    <constraint firstItem="0vM-no-0Pb" firstAttribute="leading" secondItem="bKX-VE-gT2" secondAttribute="trailing" constant="5" id="ZXE-zm-x9U"/>
+                                    <constraint firstAttribute="trailing" secondItem="bKX-VE-gT2" secondAttribute="trailing" constant="20" id="Yqh-1K-P5U"/>
                                     <constraint firstItem="bKX-VE-gT2" firstAttribute="centerY" secondItem="Y0V-M2-FNG" secondAttribute="centerY" id="dFE-cc-6lf"/>
-                                    <constraint firstItem="0vM-no-0Pb" firstAttribute="height" secondItem="Y0V-M2-FNG" secondAttribute="height" multiplier="0.7" id="gKh-al-d8v"/>
-                                    <constraint firstAttribute="trailing" secondItem="0vM-no-0Pb" secondAttribute="trailing" constant="20" id="lYe-fn-dLB"/>
-                                    <constraint firstItem="0vM-no-0Pb" firstAttribute="centerY" secondItem="Y0V-M2-FNG" secondAttribute="centerY" id="vbD-0o-vms"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OmW-Y1-Fl4">

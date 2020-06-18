@@ -253,6 +253,7 @@ extension WeatherViewController {
       vc.items = items
       vc.selectedCityDelegate = self
       vc.addCityDelegate = self
+      vc.deletedCityDelegate = self
     }
   }
 }
@@ -268,7 +269,13 @@ extension WeatherViewController: ChangeButton {
   }
 }
 
-extension WeatherViewController: SelectedCity, AddCity {
+extension WeatherViewController: SelectedCity, AddCity, DeletedCity {
+  func deletedCity(items: [DataStructs]) {
+    self.items = items
+    collectionView.reloadData()
+    setUpPageControl()
+  }
+  
   func selectedCity(indexPath: IndexPath) {
     collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
   }
