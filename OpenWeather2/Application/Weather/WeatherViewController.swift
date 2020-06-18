@@ -17,6 +17,7 @@ class WeatherViewController: UIViewController {
   @IBOutlet weak var updatedTimeLabel: UILabel!
   @IBOutlet weak var pageControl: UIPageControl!
   @IBOutlet weak var collectionView: UICollectionView!
+  @IBOutlet weak var refreshButton: UIButton!
   
   // MARK: - Properties
   private var items: [DataStructs] = []
@@ -66,6 +67,14 @@ class WeatherViewController: UIViewController {
           self.items[currentIndex] = data!
           self.collectionView.reloadData()
           self.setUpdatedTime()
+          
+          // reload animation
+          let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
+          rotateAnimation.fromValue = 0.0
+          rotateAnimation.toValue = CGFloat(.pi * 2.0)
+          rotateAnimation.duration = 1
+
+          self.refreshButton.layer.add(rotateAnimation, forKey: nil)
         }
       }
     }

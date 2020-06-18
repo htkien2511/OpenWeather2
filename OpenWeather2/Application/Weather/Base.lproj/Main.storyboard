@@ -650,6 +650,7 @@
                     <connections>
                         <outlet property="collectionView" destination="HEx-yG-zez" id="DZF-sE-PDX"/>
                         <outlet property="pageControl" destination="6iP-td-KmF" id="8C1-5n-boo"/>
+                        <outlet property="refreshButton" destination="HBV-Dw-ROX" id="p8R-UC-E3v"/>
                         <outlet property="updatedDayLabel" destination="ggh-EP-c5g" id="H91-by-mxt"/>
                         <outlet property="updatedTimeLabel" destination="SGV-p6-RBz" id="dRG-0I-Bc5"/>
                     </connections>
