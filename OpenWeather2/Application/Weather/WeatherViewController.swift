@@ -240,7 +240,6 @@ extension WeatherViewController: UICollectionViewDataSource {
   func setUpWeather(_ cell: WeatherCollectionViewCell,
                     indexPath: IndexPath) {
     cell.generalWeatherView.border()
-    cell.detailWeatherView.border()
     cell.cityLabel.shadow()
     cell.temperatureLabel.shadow()
     cell.weatherDescriptionLabel.shadow()

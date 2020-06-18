@@ -595,7 +595,6 @@
                                         <size key="customSize" width="414" height="618.66666666666652"/>
                                         <connections>
                                             <outlet property="cityLabel" destination="kOV-me-IO9" id="cId-mz-2G4"/>
-                                            <outlet property="detailWeatherView" destination="h6i-wT-SSc" id="TXa-7S-XQb"/>
                                             <outlet property="everyDaysButton" destination="Xmd-3L-FgF" id="4BT-ft-5rd"/>
                                             <outlet property="everyHoursButton" destination="MsL-Bl-Kol" id="eFu-Cf-pMd"/>
                                             <outlet property="generalWeatherView" destination="Fp5-ma-mmH" id="Zy6-QG-vyK"/>

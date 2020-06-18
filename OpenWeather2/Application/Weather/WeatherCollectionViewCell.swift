@@ -22,7 +22,6 @@ class WeatherCollectionViewCell: UICollectionViewCell {
   @IBOutlet weak var everyDaysButton: UIButton!
   @IBOutlet weak var everyHoursButton: UIButton!
   @IBOutlet weak var generalWeatherView: UIView!
-  @IBOutlet weak var detailWeatherView: UIView!
   
   weak var delegate: ChangeButton?
   
