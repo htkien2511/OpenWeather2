@@ -58,12 +58,23 @@ class WeatherViewController: UIViewController {
   }
   
   @IBAction func addCityButtonTapped(_ sender: Any) {
-    addCity() { (city) in
+    addCity()
+  }
+  
+  // MARK: - Add city
+  func addCity() {
+    getNameCity() { (city) in
       let dataManager = DataManager(baseURL: API.AuthenticatedBaseURL)
       dataManager.weatherDataForLocation(city: city) { (data, error) in
         if let _ = error {
           DispatchQueue.main.async {
-            self.showMessage(error: error!)
+            // add this code to reuse function in AllCitiesViewController
+            if self.checkAllCitiesVC() {
+              let vc = self.presentedViewController as? AllCitiesViewController
+              vc?.showMessage(error: error!)
+            } else {
+              self.showMessage(error: error!)
+            }
           }
         }
         else {
@@ -73,16 +84,19 @@ class WeatherViewController: UIViewController {
             // go to new item
             let indexPath = IndexPath(item: self.items.count-1, section: 0)
             self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-            self.showAlert(message: "SUCCESS")
             self.setUpPageControl()
+            
+            // when add in allCitiesVC, dismiss allCitiesVC and display new city
+            if self.checkAllCitiesVC() {
+              self.dismiss(animated: true, completion: nil)
+            }
           }
         }
       }
     }
   }
   
-  // MARK: - Add alert for entering city name
-  func addCity(completion: @escaping (_ city: String) -> ()) {
+  func getNameCity(completion: @escaping (_ city: String) -> ()) {
     let alertController = UIAlertController(title: "Title", message: "", preferredStyle: .alert)
     alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { alert -> Void in
       let textField = alertController.textFields![0] as UITextField
@@ -98,7 +112,22 @@ class WeatherViewController: UIViewController {
     alertController.addTextField(configurationHandler: {(textField : UITextField!) -> Void in
       textField.placeholder = "Search"
     })
-    self.present(alertController, animated: true, completion: nil)
+    
+    // add this code to reuse function in AllCitiesViewController
+    if checkAllCitiesVC() {
+      let vc = presentedViewController as? AllCitiesViewController
+      vc?.present(alertController, animated: true, completion: nil)
+    } else {
+      self.present(alertController, animated: true, completion: nil)
+    }
+  }
+  
+  func checkAllCitiesVC() -> Bool {
+    if presentedViewController as? AllCitiesViewController != nil {
+      return true
+    } else {
+      return false
+    }
   }
   
   // MARK: - Show alert response users
@@ -222,7 +251,8 @@ extension WeatherViewController {
     if segue.destination is AllCitiesViewController {
       let vc = segue.destination as! AllCitiesViewController
       vc.items = items
-      vc.delegate = self
+      vc.selectedCityDelegate = self
+      vc.addCityDelegate = self
     }
   }
 }
@@ -238,8 +268,12 @@ extension WeatherViewController: ChangeButton {
   }
 }
 
-extension WeatherViewController: SelectedCity {
+extension WeatherViewController: SelectedCity, AddCity {
   func selectedCity(indexPath: IndexPath) {
     collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+  }
+  
+  func reuseAddCity() {
+    addCity()
   }
 }

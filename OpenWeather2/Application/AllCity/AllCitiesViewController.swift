@@ -12,6 +12,10 @@ protocol SelectedCity: class {
   func selectedCity(indexPath: IndexPath)
 }
 
+protocol AddCity: class {
+  func reuseAddCity()
+}
+
 private let reuseIdentifier = "allCitiesCell"
 
 class AllCitiesViewController: UIViewController {
@@ -22,12 +26,13 @@ class AllCitiesViewController: UIViewController {
   // MARK: - Properties
   var items: [DataStructs] = []
   
-  weak var delegate: SelectedCity?
+  weak var selectedCityDelegate: SelectedCity?
+  weak var addCityDelegate: AddCity?
   
   // MARK: -
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    definesPresentationContext = true
     setUpElements()
   }
   
@@ -37,6 +42,33 @@ class AllCitiesViewController: UIViewController {
     let allCitiesTableViewCell = UINib(nibName: "AllCitiesTableViewCell", bundle: nil)
     allCitiesTableView.register(allCitiesTableViewCell, forCellReuseIdentifier: reuseIdentifier)
   }
+  
+  // MARK: - Show alert response users
+  func showMessage(error: DataManagerError) {
+    switch error {
+    case .InvalidResponse:
+      showAlert(message: "Invalid Response")
+    case .FailedRequest:
+      showAlert(message: "Failed Request")
+    case .CityNotFound:
+      showAlert(message: "City Not Found")
+    default:
+      showAlert(message: "Unknown Error")
+    }
+  }
+  
+  func showAlert(message: String) {
+    let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    self.present(alert, animated: true, completion: nil)
+  }
+  
+  // MARK: - Action
+  // reuse Add function in WeatherViewController
+  @IBAction func addButtonTapped(_ sender: Any) {
+    addCityDelegate?.reuseAddCity()
+  }
+  
 }
 
 // MARK: - Table View Data Source
@@ -65,7 +97,7 @@ extension AllCitiesViewController: UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    self.delegate?.selectedCity(indexPath: indexPath)
+    self.selectedCityDelegate?.selectedCity(indexPath: indexPath)
     self.dismiss(animated: true, completion: nil)
   }
 }
