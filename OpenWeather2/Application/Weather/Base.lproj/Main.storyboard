@@ -242,7 +242,7 @@
                                                                 <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MsL-Bl-Kol">
                                                                     <rect key="frame" x="0.0" y="0.0" width="191" height="50"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                    <state key="normal" title="EVERY HOUR">
+                                                                    <state key="normal" title="EVERY HOURS">
                                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </state>
                                                                     <connections>
@@ -252,7 +252,7 @@
                                                                 <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xmd-3L-FgF">
                                                                     <rect key="frame" x="207" y="0.0" width="191" height="50"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                    <state key="normal" title="EVERY DAY">
+                                                                    <state key="normal" title="EVERY DAYS">
                                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </state>
                                                                     <connections>

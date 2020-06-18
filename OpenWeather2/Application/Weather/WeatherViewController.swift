@@ -20,7 +20,7 @@ class WeatherViewController: UIViewController {
   
   // MARK: - Properties
   private var items: [DataStructs] = []
-  private var currentIndexItem: Int = 0
+  private var isEveryDaysChecked = false
   
   
   // MARK: -
@@ -164,11 +164,15 @@ extension WeatherViewController: UICollectionViewDataSource {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                   for: indexPath) as! WeatherCollectionViewCell
     if items.count == 0 {
-      loadDataFromAPI(cell, indexPath: indexPath, city: "Hue")
+      loadDataFromAPI(cell, indexPath: indexPath, city: "DaNang")
     }
     else {
       self.setUpWeather(cell, indexPath: indexPath)
-      self.setUpEveryWeather(cell, indexPath: indexPath)
+      if self.isEveryDaysChecked {
+        self.setUpEveryDays(cell, indexPath: indexPath)
+      } else {
+        self.setUpEveryHours(cell, indexPath: indexPath)
+      }
       self.setUpdatedTime()
     }
     
@@ -189,8 +193,8 @@ extension WeatherViewController: UICollectionViewDataSource {
         DispatchQueue.main.async {
           self.items.append(data!)
           self.setUpWeather(cell, indexPath: indexPath)
-          self.setUpEveryWeather(cell, indexPath: indexPath)
           self.setUpdatedTime()
+          self.setUpEveryHours(cell, indexPath: indexPath)
         }
       }
     }
@@ -206,7 +210,7 @@ extension WeatherViewController: UICollectionViewDataSource {
     cell.iconImageView.image = UIImage(named: self.items[indexPath.item].list[currentIndex].weather[0].icon)
   }
   
-  func setUpEveryWeather(_ cell: WeatherCollectionViewCell,
+  func setUpEveryHours(_ cell: WeatherCollectionViewCell,
                          indexPath: IndexPath) {
     let detailEveryHour = HelperWeather.getWeatherEveryHour(data: items[indexPath.item])
     let lastedIndex = HelperWeather.getLastedIndex(data: items[indexPath.item])
@@ -214,6 +218,19 @@ extension WeatherViewController: UICollectionViewDataSource {
       cell.tempDetailArray![i].text = String("\(Int(self.items[indexPath.item].list[i+lastedIndex].main.temp - 273))")
       cell.dayDetailArray![i].text = detailEveryHour[i+lastedIndex]
       cell.iconDetailArray![i].image = UIImage(named: self.items[indexPath.item].list[i+lastedIndex].weather[0].icon)
+    }
+  }
+  
+  func setUpEveryDays(_ cell: WeatherCollectionViewCell,
+                         indexPath: IndexPath) {
+    let detailEveryDays = HelperWeather.getWeatherEveryDay(data: items[indexPath.item])
+    let currentIndex = HelperWeather.getLastedIndex(data: items[indexPath.item]) + 1
+    for i in 0..<6 {
+      // [list] in JSON has 40 element
+      let index = i*8 + currentIndex > 39 ? 39 : i*8 + currentIndex
+      cell.tempDetailArray![i].text = String("\(Int(self.items[indexPath.item].list[index].main.temp - 273))")
+      cell.dayDetailArray![i].text = detailEveryDays[index]
+      cell.iconDetailArray![i].image = UIImage(named: self.items[indexPath.item].list[index].weather[0].icon)
     }
   }
   
@@ -261,11 +278,8 @@ extension WeatherViewController {
 // MARK: - Protocol Delegate
 extension WeatherViewController: ChangeButton {
   func isEveryDayTapped(_ isTapped: Bool) {
-    if isTapped {
-      print("Every Day Tapped")
-    } else {
-      print("Every Hour Tapped")
-    }
+    isEveryDaysChecked = isTapped
+    collectionView.reloadData()
   }
 }
 
