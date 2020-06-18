@@ -241,6 +241,9 @@ extension WeatherViewController: UICollectionViewDataSource {
                     indexPath: IndexPath) {
     cell.generalWeatherView.border()
     cell.detailWeatherView.border()
+    cell.cityLabel.shadow()
+    cell.temperatureLabel.shadow()
+    cell.weatherDescriptionLabel.shadow()
     
     // set information for general weather
     let currentIndex = HelperWeather.getLastedIndex(data: items[indexPath.item]) + 1
