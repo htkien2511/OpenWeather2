@@ -67,10 +67,13 @@ class WeatherViewController: UIViewController {
         }
         else {
           DispatchQueue.main.async {
-            self.showAlert(message: "SUCCESS")
             self.items.append(data!)
-            self.setUpPageControl()
             self.collectionView.reloadData()
+            // go to new item
+            let indexPath = IndexPath(item: self.items.count-1, section: 0)
+            self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            self.showAlert(message: "SUCCESS")
+            self.setUpPageControl()
           }
         }
       }
