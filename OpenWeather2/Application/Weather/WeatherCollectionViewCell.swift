@@ -19,6 +19,10 @@ class WeatherCollectionViewCell: UICollectionViewCell {
   @IBOutlet weak var iconImageView: UIImageView!
   @IBOutlet weak var temperatureLabel: UILabel!
   @IBOutlet weak var weatherDescriptionLabel: UILabel!
+  @IBOutlet weak var everyDaysButton: UIButton!
+  @IBOutlet weak var everyHoursButton: UIButton!
+  @IBOutlet weak var generalWeatherView: UIView!
+  @IBOutlet weak var detailWeatherView: UIView!
   
   weak var delegate: ChangeButton?
   

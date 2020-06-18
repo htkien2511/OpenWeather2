@@ -18,6 +18,8 @@ class WeatherViewController: UIViewController {
   @IBOutlet weak var pageControl: UIPageControl!
   @IBOutlet weak var collectionView: UICollectionView!
   @IBOutlet weak var refreshButton: UIButton!
+  @IBOutlet weak var addButton: UIButton!
+  @IBOutlet weak var cityButton: UIButton!
   
   // MARK: - Properties
   private var items: [DataStructs] = []
@@ -28,8 +30,18 @@ class WeatherViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    setUpHeaderButton()
     setUpPageControl()
     setUpCollectionView()
+  }
+  
+  func setUpHeaderButton() {
+    addButton.corner()
+    addButton.border()
+    addButton.shadow()
+    cityButton.corner()
+    cityButton.border()
+    cityButton.shadow()
   }
   
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -188,6 +200,7 @@ extension WeatherViewController: UICollectionViewDataSource {
                                                   for: indexPath) as! WeatherCollectionViewCell
     if items.count == 0 {
       loadDataFromAPI(cell, indexPath: indexPath, city: "DaNang")
+      self.setUpHourNDayButton(cell)
     }
     else {
       self.setUpWeather(cell, indexPath: indexPath)
@@ -197,6 +210,7 @@ extension WeatherViewController: UICollectionViewDataSource {
         self.setUpEveryHours(cell, indexPath: indexPath)
       }
       self.setUpdatedTime()
+      self.setUpHourNDayButton(cell)
     }
     
     cell.delegate = self
@@ -225,6 +239,10 @@ extension WeatherViewController: UICollectionViewDataSource {
   
   func setUpWeather(_ cell: WeatherCollectionViewCell,
                     indexPath: IndexPath) {
+    cell.generalWeatherView.border()
+    cell.detailWeatherView.border()
+    
+    // set information for general weather
     let currentIndex = HelperWeather.getLastedIndex(data: items[indexPath.item]) + 1
     
     cell.cityLabel.text = String("\(self.items[indexPath.item].city.name)")
@@ -235,6 +253,11 @@ extension WeatherViewController: UICollectionViewDataSource {
   
   func setUpEveryHours(_ cell: WeatherCollectionViewCell,
                          indexPath: IndexPath) {
+    // highligh button if button is checking
+    cell.everyHoursButton.layer.backgroundColor = #colorLiteral(red: 0, green: 0.6039215686, blue: 0.7803921569, alpha: 1)
+    cell.everyDaysButton.layer.backgroundColor = #colorLiteral(red: 0, green: 0.6941176471, blue: 0.8941176471, alpha: 1)
+    
+    // set up detail weather every hour
     let detailEveryHour = HelperWeather.getWeatherEveryHour(data: items[indexPath.item])
     let lastedIndex = HelperWeather.getLastedIndex(data: items[indexPath.item])
     for i in 0..<6 {
@@ -246,6 +269,8 @@ extension WeatherViewController: UICollectionViewDataSource {
   
   func setUpEveryDays(_ cell: WeatherCollectionViewCell,
                          indexPath: IndexPath) {
+    cell.everyDaysButton.layer.backgroundColor = #colorLiteral(red: 0, green: 0.6039215686, blue: 0.7803921569, alpha: 1)
+    cell.everyHoursButton.layer.backgroundColor = #colorLiteral(red: 0, green: 0.6941176471, blue: 0.8941176471, alpha: 1)
     let detailEveryDays = HelperWeather.getWeatherEveryDay(data: items[indexPath.item])
     let currentIndex = HelperWeather.getLastedIndex(data: items[indexPath.item]) + 1
     for i in 0..<6 {
@@ -267,6 +292,15 @@ extension WeatherViewController: UICollectionViewDataSource {
     // get date
     dateFormatter.dateFormat = "dd-MM-yyyy"
     updatedDayLabel.text = dateFormatter.string(from: currentDate)
+  }
+  
+  func setUpHourNDayButton(_ cell: WeatherCollectionViewCell) {
+    cell.everyHoursButton.corner()
+    cell.everyHoursButton.shadow()
+    cell.everyHoursButton.border()
+    cell.everyDaysButton.corner()
+    cell.everyDaysButton.shadow()
+    cell.everyDaysButton.border()
   }
 }
 
@@ -300,6 +334,10 @@ extension WeatherViewController {
 
 // MARK: - Protocol Delegate
 extension WeatherViewController: ChangeButton {
+  func setupViewOfWeather(_ view: UIView) {
+    
+  }
+  
   func isEveryDayTapped(_ isTapped: Bool) {
     isEveryDaysChecked = isTapped
     collectionView.reloadData()

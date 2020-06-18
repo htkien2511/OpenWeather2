@@ -241,6 +241,7 @@
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MsL-Bl-Kol">
                                                                     <rect key="frame" x="0.0" y="0.0" width="191" height="50"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                                     <state key="normal" title="EVERY HOURS">
                                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -596,6 +597,10 @@
                                         <size key="customSize" width="414" height="618.66666666666652"/>
                                         <connections>
                                             <outlet property="cityLabel" destination="kOV-me-IO9" id="cId-mz-2G4"/>
+                                            <outlet property="detailWeatherView" destination="h6i-wT-SSc" id="TXa-7S-XQb"/>
+                                            <outlet property="everyDaysButton" destination="Xmd-3L-FgF" id="4BT-ft-5rd"/>
+                                            <outlet property="everyHoursButton" destination="MsL-Bl-Kol" id="eFu-Cf-pMd"/>
+                                            <outlet property="generalWeatherView" destination="Fp5-ma-mmH" id="Zy6-QG-vyK"/>
                                             <outlet property="iconImageView" destination="do0-S2-Kd9" id="MwZ-x0-Rf4"/>
                                             <outlet property="temperatureLabel" destination="aYs-ZV-3fw" id="mJp-8D-l1x"/>
                                             <outlet property="weatherDescriptionLabel" destination="7T9-tc-QAr" id="YrR-aI-Ucv"/>
@@ -648,6 +653,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="addButton" destination="jif-2d-JpB" id="90B-Sn-Pps"/>
+                        <outlet property="cityButton" destination="jf3-B2-Nsb" id="ryL-JF-x7c"/>
                         <outlet property="collectionView" destination="HEx-yG-zez" id="DZF-sE-PDX"/>
                         <outlet property="pageControl" destination="6iP-td-KmF" id="8C1-5n-boo"/>
                         <outlet property="refreshButton" destination="HBV-Dw-ROX" id="p8R-UC-E3v"/>
