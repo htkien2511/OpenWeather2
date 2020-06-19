@@ -26,7 +26,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="G8p-4X-wDm" kind="show" id="8Ks-DX-CFo"/>
+                                            <segue destination="G8p-4X-wDm" kind="show" identifier="addCity" id="8Ks-DX-CFo"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jf3-B2-Nsb">

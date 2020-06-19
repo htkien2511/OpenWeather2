@@ -11,9 +11,6 @@ import UIKit
 protocol SelectedCity: class {
   func selectedCity(indexPath: IndexPath)
 }
-
-
-
 protocol DeletedCity: class {
   func deletedCity(items: [DataStructs])
 }
@@ -29,7 +26,6 @@ class AllCitiesViewController: UIViewController {
   var items: [DataStructs] = []
   
   weak var selectedCityDelegate: SelectedCity?
-  //weak var addCityDelegate: AddCity?
   weak var deletedCityDelegate: DeletedCity?
   
   // MARK: -
@@ -46,37 +42,19 @@ class AllCitiesViewController: UIViewController {
     allCitiesTableView.register(allCitiesTableViewCell, forCellReuseIdentifier: reuseIdentifier)
   }
   
-  // MARK: - Show alert response users
-  func showMessage(error: DataManagerError) {
-    switch error {
-    case .InvalidResponse:
-      showAlert(message: "Invalid Response")
-    case .FailedRequest:
-      showAlert(message: "Failed Request")
-    case .CityNotFound:
-      showAlert(message: "City Not Found")
-    default:
-      showAlert(message: "Unknown Error")
-    }
-  }
-  
-  func showAlert(message: String) {
-    let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
-    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-    self.present(alert, animated: true, completion: nil)
-  }
-  
   // MARK: - Action
-  // reuse Add function in WeatherViewController
   @IBAction func addButtonTapped(_ sender: Any) {
-    //addCityDelegate?.reuseAddCity()
+    // when dismiss vc. current vc changed.
+    // if don't have pvc below. AddCityViewController will not call
+    weak var pvc = self.presentingViewController
+    // pvc = WeatherViewController
+    self.dismiss(animated: true) {
+      pvc?.performSegue(withIdentifier: "addCity", sender: nil)
+    }
+    
   }
   @IBAction func backButtonTapped(_ sender: Any) {
     dismiss(animated: true, completion: nil)
-  }
-  
-  @IBAction func deleteButtonTapped(_ sender: Any) {
-    allCitiesTableView.isEditing = true
   }
 }
 

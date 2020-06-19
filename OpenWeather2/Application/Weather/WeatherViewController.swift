@@ -91,95 +91,6 @@ class WeatherViewController: UIViewController {
       }
     }
   }
-  
-  // MARK: - Add city
-  func addCity() {
-    getNameCity() { (city) in
-      let dataManager = DataManager(baseURL: API.AuthenticatedBaseURL)
-      dataManager.weatherDataForLocation(city: city) { (data, error) in
-        if let _ = error {
-          DispatchQueue.main.async {
-            // add this code to reuse function in AllCitiesViewController
-            if self.checkAllCitiesVC() {
-              let vc = self.presentedViewController as? AllCitiesViewController
-              vc?.showMessage(error: error!)
-            } else {
-              self.showMessage(error: error!)
-            }
-          }
-        }
-        else {
-          DispatchQueue.main.async {
-            self.items.append(data!)
-            self.collectionView.reloadData()
-            // go to new item
-            let indexPath = IndexPath(item: self.items.count-1, section: 0)
-            self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-            self.setUpPageControl()
-            
-            // when add in allCitiesVC, dismiss allCitiesVC and display new city
-            if self.checkAllCitiesVC() {
-              self.dismiss(animated: true, completion: nil)
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  func getNameCity(completion: @escaping (_ city: String) -> ()) {
-    let alertController = UIAlertController(title: "Title", message: "", preferredStyle: .alert)
-    alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { alert -> Void in
-      let textField = alertController.textFields![0] as UITextField
-      var city = textField.text!
-      while city.contains(" ") {
-        city.removeAll { (char) -> Bool in
-          char == " "
-        }
-      }
-      completion(city)
-    }))
-    alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-    alertController.addTextField(configurationHandler: {(textField : UITextField!) -> Void in
-      textField.placeholder = "Search"
-    })
-    
-    // add this code to reuse function in AllCitiesViewController
-    if checkAllCitiesVC() {
-      let vc = presentedViewController as? AllCitiesViewController
-      vc?.present(alertController, animated: true, completion: nil)
-    } else {
-      self.present(alertController, animated: true, completion: nil)
-    }
-  }
-  
-  func checkAllCitiesVC() -> Bool {
-    if presentedViewController as? AllCitiesViewController != nil {
-      return true
-    } else {
-      return false
-    }
-  }
-  
-  // MARK: - Show alert response users
-  func showMessage(error: DataManagerError) {
-    switch error {
-    case .InvalidResponse:
-      showAlert(message: "Invalid Response")
-    case .FailedRequest:
-      showAlert(message: "Failed Request")
-    case .CityNotFound:
-      showAlert(message: "City Not Found")
-    default:
-      showAlert(message: "Unknown Error")
-    }
-  }
-  
-  func showAlert(message: String) {
-    let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
-    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-    self.present(alert, animated: true, completion: nil)
-  }
 }
 
 // MARK: - Collection View Data Source
@@ -242,7 +153,6 @@ extension WeatherViewController: UICollectionViewDataSource {
     for i in 0..<6 {
       cell.viewDetailArray![i].border()
     }
-    
     
     // set information for general weather
     let currentIndex = HelperWeather.getLastedIndex(data: items[indexPath.item]) + 1
@@ -328,7 +238,6 @@ extension WeatherViewController {
       let vc = segue.destination as! AllCitiesViewController
       vc.items = items
       vc.selectedCityDelegate = self
-      //vc.addCityDelegate = self
       vc.deletedCityDelegate = self
     }
     else if segue.destination is AddCityViewController {
@@ -374,14 +283,7 @@ extension WeatherViewController: AddCity {
     dataManager.weatherDataForLocation(city: safeName) { (data, error) in
       if let _ = error {
         DispatchQueue.main.async {
-          // add this code to reuse function in AllCitiesViewController
-          if self.checkAllCitiesVC() {
-            let vc = self.presentedViewController as? AllCitiesViewController
-            vc?.showMessage(error: error!)
-          } else {
-            let vc = self.presentedViewController as? AddCityViewController
-            vc?.showMessage(error: error!)
-          }
+          print(error!)
         }
       }
       else {
