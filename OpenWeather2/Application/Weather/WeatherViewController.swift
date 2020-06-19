@@ -92,10 +92,6 @@ class WeatherViewController: UIViewController {
     }
   }
   
-  @IBAction func addCityButtonTapped(_ sender: Any) {
-    //addCity()
-  }
-  
   // MARK: - Add city
   func addCity() {
     getNameCity() { (city) in
@@ -332,25 +328,27 @@ extension WeatherViewController {
       let vc = segue.destination as! AllCitiesViewController
       vc.items = items
       vc.selectedCityDelegate = self
-      vc.addCityDelegate = self
+      //vc.addCityDelegate = self
       vc.deletedCityDelegate = self
+    }
+    else if segue.destination is AddCityViewController {
+      let vc = segue.destination as! AddCityViewController
+      vc.addCityDelegate = self
     }
   }
 }
 
 // MARK: - Protocol Delegate
+// WeatherCollectionViewCell
 extension WeatherViewController: ChangeButton {
-  func setupViewOfWeather(_ view: UIView) {
-    
-  }
-  
   func isEveryDayTapped(_ isTapped: Bool) {
     isEveryDaysChecked = isTapped
     collectionView.reloadData()
   }
 }
 
-extension WeatherViewController: SelectedCity, AddCity, DeletedCity {
+// AllCitiesTableViewController
+extension WeatherViewController: SelectedCity, DeletedCity {
   func deletedCity(items: [DataStructs]) {
     self.items = items
     collectionView.reloadData()
@@ -360,8 +358,45 @@ extension WeatherViewController: SelectedCity, AddCity, DeletedCity {
   func selectedCity(indexPath: IndexPath) {
     collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
   }
-  
-  func reuseAddCity() {
-    addCity()
+}
+
+// AddCityViewController
+extension WeatherViewController: AddCity {
+  func addCity(name: String) {
+    // remove space in name
+    var safeName = name
+    while safeName.contains(" ") {
+      safeName.removeAll { (char) -> Bool in
+        char == " "
+      }
+    }
+    let dataManager = DataManager(baseURL: API.AuthenticatedBaseURL)
+    dataManager.weatherDataForLocation(city: safeName) { (data, error) in
+      if let _ = error {
+        DispatchQueue.main.async {
+          // add this code to reuse function in AllCitiesViewController
+          if self.checkAllCitiesVC() {
+            let vc = self.presentedViewController as? AllCitiesViewController
+            vc?.showMessage(error: error!)
+          } else {
+            let vc = self.presentedViewController as? AddCityViewController
+            vc?.showMessage(error: error!)
+          }
+        }
+      }
+      else {
+        DispatchQueue.main.async {
+          self.items.append(data!)
+          self.collectionView.reloadData()
+          // go to new item
+          let indexPath = IndexPath(item: self.items.count-1, section: 0)
+          self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+          self.setUpPageControl()
+          
+          // when add a city, dismiss current viewcontroller and display new city in main screen
+          self.dismiss(animated: true, completion: nil)
+        }
+      }
+    }
   }
 }

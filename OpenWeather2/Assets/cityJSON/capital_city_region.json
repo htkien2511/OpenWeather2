@@ -30,16 +30,6 @@
         "region": "Africa"
     },
     {
-        "name": "Anguilla",
-        "capital": "The Valley",
-        "region": "Americas"
-    },
-    {
-        "name": "Argentina",
-        "capital": "Buenos Aires",
-        "region": "Americas"
-    },
-    {
         "name": "Armenia",
         "capital": "Yerevan",
         "region": "Asia"
@@ -140,21 +130,6 @@
         "region": "Americas"
     },
     {
-        "name": "British Indian Ocean Territory",
-        "capital": "Diego Garcia",
-        "region": "Africa"
-    },
-    {
-        "name": "Virgin Islands (British)",
-        "capital": "Road Town",
-        "region": "Americas"
-    },
-    {
-        "name": "Virgin Islands (U.S.)",
-        "capital": "Charlotte Amalie",
-        "region": "Americas"
-    },
-    {
         "name": "Bulgaria",
         "capital": "Sofia",
         "region": "Europe"
@@ -168,11 +143,6 @@
         "name": "Burundi",
         "capital": "Bujumbura",
         "region": "Africa"
-    },
-    {
-        "name": "Cambodia",
-        "capital": "Phnom Penh",
-        "region": "Asia"
     },
     {
         "name": "Cameroon",

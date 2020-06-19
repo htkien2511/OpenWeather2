@@ -8,17 +8,24 @@
 
 import UIKit
 
+protocol AddCity: class {
+  func addCity(name: String)
+}
+
 class AddCityViewController: UIViewController {
   
   // MARK: - Outlet
   @IBOutlet weak var addCityTableView: UITableView!
   @IBOutlet weak var addCitySearchBar: UISearchBar!
   
+  // MARK: - Properties
   var dataStruct: LocalJSONStruct = []
   var nameCity: [String] = []
-  
   var filteredData: [String]!
   
+  weak var addCityDelegate: AddCity?
+  
+  // MARK: - 
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -53,6 +60,26 @@ class AddCityViewController: UIViewController {
     addCitySearchBar.delegate = self
     addCityTableView.tableFooterView = UIView()
   }
+  
+  // MARK: - Show alert response users
+  func showMessage(error: DataManagerError) {
+    switch error {
+    case .InvalidResponse:
+      showAlert(message: "Invalid Response")
+    case .FailedRequest:
+      showAlert(message: "Failed Request")
+    case .CityNotFound:
+      showAlert(message: "City Not Found")
+    default:
+      showAlert(message: "Unknown Error")
+    }
+  }
+  
+  func showAlert(message: String) {
+    let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    self.present(alert, animated: true, completion: nil)
+  }
 }
 
 // MARK: - Table View Data Source
@@ -65,6 +92,22 @@ extension AddCityViewController: UITableViewDataSource {
     let cell = tableView.dequeueReusableCell(withIdentifier: "addCityCell", for: indexPath)
     cell.textLabel?.text = filteredData[indexPath.row]
     return cell
+  }
+}
+
+// MARK: - Table View Delegate
+extension AddCityViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    // when press a city. Filter city's name of one's string
+    let selectedString = filteredData[indexPath.row]
+    var i = 0
+    var nameCityContainComma: String
+    repeat {
+      i += 1
+      nameCityContainComma = String(selectedString[..<selectedString.index(selectedString.startIndex, offsetBy: i)])
+    } while !nameCityContainComma.contains(",")
+    let nameCity = String(nameCityContainComma.dropLast())
+    addCityDelegate?.addCity(name: nameCity)
   }
 }
 

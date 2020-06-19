@@ -12,9 +12,7 @@ protocol SelectedCity: class {
   func selectedCity(indexPath: IndexPath)
 }
 
-protocol AddCity: class {
-  func reuseAddCity()
-}
+
 
 protocol DeletedCity: class {
   func deletedCity(items: [DataStructs])
@@ -31,7 +29,7 @@ class AllCitiesViewController: UIViewController {
   var items: [DataStructs] = []
   
   weak var selectedCityDelegate: SelectedCity?
-  weak var addCityDelegate: AddCity?
+  //weak var addCityDelegate: AddCity?
   weak var deletedCityDelegate: DeletedCity?
   
   // MARK: -
@@ -71,7 +69,7 @@ class AllCitiesViewController: UIViewController {
   // MARK: - Action
   // reuse Add function in WeatherViewController
   @IBAction func addButtonTapped(_ sender: Any) {
-    addCityDelegate?.reuseAddCity()
+    //addCityDelegate?.reuseAddCity()
   }
   @IBAction func backButtonTapped(_ sender: Any) {
     dismiss(animated: true, completion: nil)
