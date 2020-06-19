@@ -14,22 +14,40 @@ class AddCityViewController: UIViewController {
   @IBOutlet weak var addCityTableView: UITableView!
   @IBOutlet weak var addCitySearchBar: UISearchBar!
   
-  let data = ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Houston, TX",
-  "Philadelphia, PA", "Phoenix, AZ", "San Diego, CA", "San Antonio, TX",
-  "Dallas, TX", "Detroit, MI", "San Jose, CA", "Indianapolis, IN",
-  "Jacksonville, FL", "San Francisco, CA", "Columbus, OH", "Austin, TX",
-  "Memphis, TN", "Baltimore, MD", "Charlotte, ND", "Fort Worth, TX"]
+  var dataStruct: LocalJSONStruct = []
+  var nameCity: [String] = []
   
   var filteredData: [String]!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    readFileJSON()
+    loadDataIntoArray()
     setUpElements()
   }
   
+  func loadDataIntoArray() {
+    for item in dataStruct {
+      let name = "\(item.capital), \(item.name), \(item.region)"
+      nameCity.append(name)
+    }
+  }
+  
+  func readFileJSON() {
+    if let path = Bundle.main.path(forResource: "capital_city_region", ofType: "json") {
+      do {
+        let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+        let decoder = JSONDecoder()
+        self.dataStruct = try decoder.decode(LocalJSONStruct.self, from: data)
+      } catch {
+        print("Can't read json file!")
+      }
+    }
+  }
+  
   func setUpElements() {
-    filteredData = data
+    filteredData = nameCity
     
     addCityTableView.dataSource = self
     addCitySearchBar.delegate = self
@@ -53,7 +71,7 @@ extension AddCityViewController: UITableViewDataSource {
 // MARK: - Search Bar Delegate
 extension AddCityViewController: UISearchBarDelegate {
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    filteredData = searchText.isEmpty ? data : data.filter({ (item) -> Bool in
+    filteredData = searchText.isEmpty ? nameCity : nameCity.filter({ (item) -> Bool in
       return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
     })
     addCityTableView.reloadData()
@@ -67,7 +85,7 @@ extension AddCityViewController: UISearchBarDelegate {
     addCitySearchBar.showsCancelButton = false
     addCitySearchBar.text = ""
     addCitySearchBar.resignFirstResponder()
-    filteredData = data
+    filteredData = nameCity
     addCityTableView.reloadData()
   }
 }

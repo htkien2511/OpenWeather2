@@ -27,6 +27,7 @@
                                         </state>
                                         <connections>
                                             <action selector="addCityButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AZZ-Pu-WWR"/>
+                                            <segue destination="G8p-4X-wDm" kind="show" id="8Ks-DX-CFo"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jf3-B2-Nsb">
@@ -678,6 +679,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pbE-M0-60B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="785" y="31"/>
+        </scene>
+        <!--AddCity-->
+        <scene sceneID="bJX-Hv-RQj">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddCity" id="G8p-4X-wDm" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Bn6-Ok-qhO"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t7K-Mx-6KF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="863" y="249"/>
         </scene>
     </scenes>
     <resources>

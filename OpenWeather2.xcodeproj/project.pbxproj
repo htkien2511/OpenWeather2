@@ -24,6 +24,8 @@
 		7BCDAA75249AFED600C7FAFC /* AllCitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDAA73249AFED600C7FAFC /* AllCitiesTableViewCell.swift */; };
 		7BCDAA76249AFED600C7FAFC /* AllCitiesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BCDAA74249AFED600C7FAFC /* AllCitiesTableViewCell.xib */; };
 		7BCDAA78249B610B00C7FAFC /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDAA77249B610B00C7FAFC /* UIViewExtension.swift */; };
+		7BCDD8BB249C5E9300C721AD /* capital_city_region.json in Resources */ = {isa = PBXBuildFile; fileRef = 7BCDD8BA249C5E9300C721AD /* capital_city_region.json */; };
+		7BCDD8BD249C5FF100C721AD /* LocalJSONStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDD8BC249C5FF100C721AD /* LocalJSONStruct.swift */; };
 		7BE41E5F2499FA94009E21E6 /* AllCities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BE41E5E2499FA94009E21E6 /* AllCities.storyboard */; };
 		7BE41E652499FE79009E21E6 /* AllCitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE41E642499FE79009E21E6 /* AllCitiesViewController.swift */; };
 		7BE41E672499FEC7009E21E6 /* AddCity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BE41E662499FEC7009E21E6 /* AddCity.storyboard */; };
@@ -62,6 +64,8 @@
 		7BCDAA73249AFED600C7FAFC /* AllCitiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCitiesTableViewCell.swift; sourceTree = "<group>"; };
 		7BCDAA74249AFED600C7FAFC /* AllCitiesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllCitiesTableViewCell.xib; sourceTree = "<group>"; };
 		7BCDAA77249B610B00C7FAFC /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		7BCDD8BA249C5E9300C721AD /* capital_city_region.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = capital_city_region.json; sourceTree = "<group>"; };
+		7BCDD8BC249C5FF100C721AD /* LocalJSONStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalJSONStruct.swift; sourceTree = "<group>"; };
 		7BE41E5E2499FA94009E21E6 /* AllCities.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AllCities.storyboard; sourceTree = "<group>"; };
 		7BE41E642499FE79009E21E6 /* AllCitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCitiesViewController.swift; sourceTree = "<group>"; };
 		7BE41E662499FEC7009E21E6 /* AddCity.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddCity.storyboard; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 		7B3D7E0D24971BCA007A44F2 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				7BCDD8B9249C5E7800C721AD /* cityJSON */,
 				7B3D7DF024971B72007A44F2 /* Assets.xcassets */,
 			);
 			path = Assets;
@@ -204,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				7B3D7E1524975230007A44F2 /* DataStructs.swift */,
+				7BCDD8BC249C5FF100C721AD /* LocalJSONStruct.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -215,6 +221,14 @@
 				7BCDAA77249B610B00C7FAFC /* UIViewExtension.swift */,
 			);
 			path = HelperMethod;
+			sourceTree = "<group>";
+		};
+		7BCDD8B9249C5E7800C721AD /* cityJSON */ = {
+			isa = PBXGroup;
+			children = (
+				7BCDD8BA249C5E9300C721AD /* capital_city_region.json */,
+			);
+			path = cityJSON;
 			sourceTree = "<group>";
 		};
 		7BE41E5D2499FA7C009E21E6 /* AllCity */ = {
@@ -320,6 +334,7 @@
 			files = (
 				7B3D7DF424971B72007A44F2 /* LaunchScreen.storyboard in Resources */,
 				7B3D7DF124971B72007A44F2 /* Assets.xcassets in Resources */,
+				7BCDD8BB249C5E9300C721AD /* capital_city_region.json in Resources */,
 				7BE41E672499FEC7009E21E6 /* AddCity.storyboard in Resources */,
 				7B3D7DEC24971B71007A44F2 /* Main.storyboard in Resources */,
 				7BCDAA76249AFED600C7FAFC /* AllCitiesTableViewCell.xib in Resources */,
@@ -341,6 +356,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BCDD8BD249C5FF100C721AD /* LocalJSONStruct.swift in Sources */,
 				7B3D7E1A24977D2A007A44F2 /* WeatherCollectionViewCell.swift in Sources */,
 				7B3D7E1624975230007A44F2 /* DataStructs.swift in Sources */,
 				7BE41E652499FE79009E21E6 /* AllCitiesViewController.swift in Sources */,

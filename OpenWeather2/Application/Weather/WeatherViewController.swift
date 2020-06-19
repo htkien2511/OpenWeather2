@@ -93,7 +93,7 @@ class WeatherViewController: UIViewController {
   }
   
   @IBAction func addCityButtonTapped(_ sender: Any) {
-    addCity()
+    //addCity()
   }
   
   // MARK: - Add city
