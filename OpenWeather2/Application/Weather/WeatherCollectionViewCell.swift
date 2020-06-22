@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Charts
 
 protocol ChangeButton: class {
   func isEveryDayTapped(_ isTapped: Bool)
@@ -22,6 +23,9 @@ class WeatherCollectionViewCell: UICollectionViewCell {
   @IBOutlet weak var everyDaysButton: UIButton!
   @IBOutlet weak var everyHoursButton: UIButton!
   @IBOutlet weak var generalWeatherView: UIView!
+  
+  // Line Chart View
+  @IBOutlet weak var lineChartView: LineChartView!
   
   weak var delegate: ChangeButton?
   

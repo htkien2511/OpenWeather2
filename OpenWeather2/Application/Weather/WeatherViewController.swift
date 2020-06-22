@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Charts
 
 private let reuseIdentifier = "Cell"
 
@@ -118,6 +119,7 @@ extension WeatherViewController: UICollectionViewDataSource {
       }
       self.setUpdatedTime()
       self.setUpHourNDayButton(cell)
+      self.setUpLineChartView(cell, indexPath: indexPath)
     }
     
     cell.delegate = self
@@ -139,6 +141,7 @@ extension WeatherViewController: UICollectionViewDataSource {
           self.setUpWeather(cell, indexPath: indexPath)
           self.setUpdatedTime()
           self.setUpEveryHours(cell, indexPath: indexPath)
+          self.setUpLineChartView(cell, indexPath: indexPath)
         }
       }
     }
@@ -204,6 +207,16 @@ extension WeatherViewController: UICollectionViewDataSource {
     // get date
     dateFormatter.dateFormat = "dd-MM-yyyy"
     updatedDayLabel.text = dateFormatter.string(from: currentDate)
+  }
+  
+  func setUpLineChartView(_ cell: WeatherCollectionViewCell, indexPath: IndexPath) {
+    var values: [Double] = []
+    let lastedIndex = HelperWeather.getLastedIndex(data: items[indexPath.item])
+    for i in 0..<6 {
+      values.append(Double(self.items[indexPath.item].list[i+lastedIndex].main.temp - 273))
+    }
+    cell.lineChartView.data = CustomLineChartView.dataChart(values: values)
+    CustomLineChartView.settingChart(lineChartView: cell.lineChartView)
   }
   
   func setUpHourNDayButton(_ cell: WeatherCollectionViewCell) {
