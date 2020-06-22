@@ -176,7 +176,6 @@ extension WeatherViewController: UICollectionViewDataSource {
     let detailEveryHour = HelperWeather.getWeatherEveryHour(data: items[indexPath.item])
     let lastedIndex = HelperWeather.getLastedIndex(data: items[indexPath.item])
     for i in 0..<6 {
-      cell.tempDetailArray![i].text = String("\(Int(self.items[indexPath.item].list[i+lastedIndex].main.temp - 273))")
       cell.dayDetailArray![i].text = detailEveryHour[i+lastedIndex]
       cell.iconDetailArray![i].image = UIImage(named: self.items[indexPath.item].list[i+lastedIndex].weather[0].icon)
     }
@@ -191,7 +190,6 @@ extension WeatherViewController: UICollectionViewDataSource {
     for i in 0..<6 {
       // [list] in JSON has 40 element
       let index = i*8 + currentIndex > 39 ? 39 : i*8 + currentIndex
-      cell.tempDetailArray![i].text = String("\(Int(self.items[indexPath.item].list[index].main.temp - 273))")
       cell.dayDetailArray![i].text = detailEveryDays[index]
       cell.iconDetailArray![i].image = UIImage(named: self.items[indexPath.item].list[index].weather[0].icon)
     }
@@ -213,7 +211,9 @@ extension WeatherViewController: UICollectionViewDataSource {
     var values: [Double] = []
     let lastedIndex = HelperWeather.getLastedIndex(data: items[indexPath.item])
     for i in 0..<6 {
-      values.append(Double(self.items[indexPath.item].list[i+lastedIndex].main.temp - 273))
+      // change temperature to Integer. Ex: 26.5 => 27
+      let temp = Int(self.items[indexPath.item].list[i+lastedIndex].main.temp - 273)
+      values.append(Double(temp))
     }
     cell.lineChartView.data = CustomLineChartView.dataChart(values: values)
     CustomLineChartView.settingChart(lineChartView: cell.lineChartView)
