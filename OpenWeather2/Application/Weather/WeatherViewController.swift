@@ -174,7 +174,7 @@ extension WeatherViewController: UICollectionViewDataSource {
     // set date time
     let currentDate = Date()
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "dd-MM-yyyy"
+    dateFormatter.dateFormat = "dd-MM"
     cell.dateLabel.text = dateFormatter.string(from: currentDate)
     
     // set weekdays
