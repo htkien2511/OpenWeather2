@@ -35,29 +35,36 @@ class AddCityViewController: UIViewController {
     setUpElements()
   }
   
+  // Add and Remove gestureRecognizer
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     
-    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear),
+                                           name: UIResponder.keyboardWillHideNotification,
+                                           object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear),
+                                           name: UIResponder.keyboardWillShowNotification,
+                                           object: nil)
   }
   
   @objc func keyboardWillAppear() {
     let viewIsTap = UITapGestureRecognizer(target: self, action: #selector(viewIsTapped))
-      view.addGestureRecognizer(viewIsTap)
+    view.addGestureRecognizer(viewIsTap)
   }
-
+  
   @objc func keyboardWillDisappear() {
-    view.gestureRecognizers?.removeAll()
+    view.gestureRecognizers?.removeAll(where: { (gestureRecognizer) -> Bool in
+      return gestureRecognizer is UITapGestureRecognizer
+    })
   }
   
   @objc func viewIsTapped() {
     view.endEditing(true)
   }
-
+  
   override func viewWillDisappear(_ animated: Bool) {
-      super.viewWillDisappear(animated)
-      NotificationCenter.default.removeObserver(self)
+    super.viewWillDisappear(animated)
+    NotificationCenter.default.removeObserver(self)
   }
   
   func loadDataIntoArray() {
