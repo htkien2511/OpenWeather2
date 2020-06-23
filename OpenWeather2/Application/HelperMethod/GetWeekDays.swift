@@ -36,4 +36,17 @@ class GetWeekDays {
     // weekday = 6 => Saturday
     return weekday
   }
+  
+  static func get6FollowingDays() -> [String] {
+    var followingWeek: [String] = []
+    let dateFormatter = DateFormatter()
+    let weekdays = GetWeekDays.getWeekdays()
+    for index in weekdays..<weekdays+6 {
+      let dayOfWeek = index % 7
+      followingWeek.append(dateFormatter.shortWeekdaySymbols[dayOfWeek])
+    }
+    // if today is Tuesday
+    // followingWeek = ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    return followingWeek
+  }
 }

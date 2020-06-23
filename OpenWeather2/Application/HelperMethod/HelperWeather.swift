@@ -39,26 +39,4 @@ class HelperWeather {
     
     return next6TimesHour
   }
-  
-  static func getWeatherEveryDay(data: DataStructs) -> [Int: String] {
-    var currentIndex = getLastedIndex(data: data) + 1
-
-    // date formatter
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "dd-MM"
-    
-    // get every hour
-    var next6TimesDay: [Int:String] = [:]
-    while currentIndex < data.list.count {
-      next6TimesDay[currentIndex] = dateFormatter.string(from: data.list[currentIndex].date)
-      currentIndex += 8
-    }
-    
-    // next6TimesDay has 5 element => Add 1 element
-    if next6TimesDay.count < 6 {
-      next6TimesDay[39] = dateFormatter.string(from: data.list[39].date)
-    }
-    
-    return next6TimesDay
-  }
 }

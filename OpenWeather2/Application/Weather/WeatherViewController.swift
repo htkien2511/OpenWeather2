@@ -201,12 +201,12 @@ extension WeatherViewController: UICollectionViewDataSource {
                          indexPath: IndexPath) {
     cell.everyDaysButton.layer.backgroundColor = #colorLiteral(red: 0, green: 0.6039215686, blue: 0.7803921569, alpha: 1)
     cell.everyHoursButton.layer.backgroundColor = #colorLiteral(red: 0, green: 0.6941176471, blue: 0.8941176471, alpha: 1)
-    let detailEveryDays = HelperWeather.getWeatherEveryDay(data: items[indexPath.item])
     let currentIndex = HelperWeather.getLastedIndex(data: items[indexPath.item]) + 1
     for i in 0..<6 {
       // [list] in JSON has 40 element
       let index = i*8 + currentIndex > 39 ? 39 : i*8 + currentIndex
-      cell.dayDetailArray![i].text = detailEveryDays[index]
+      let dayOfWeek = GetWeekDays.get6FollowingDays()
+      cell.dayDetailArray![i].text = dayOfWeek[i]
       cell.iconDetailArray![i].image = UIImage(named: self.items[indexPath.item].list[index].weather[0].icon)
     }
   }
