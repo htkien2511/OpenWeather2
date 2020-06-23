@@ -34,19 +34,21 @@ class CustomLineChartView {
   }
   
   static func settingChart(lineChartView: LineChartView) {
-    lineChartView.xAxis.drawGridLinesEnabled = false
-    lineChartView.xAxis.drawLabelsEnabled = false
+    // grid lines
     lineChartView.xAxis.drawAxisLineEnabled = false
+    lineChartView.xAxis.drawGridLinesEnabled = false
+    lineChartView.leftAxis.drawAxisLineEnabled = false
+    lineChartView.leftAxis.drawGridLinesEnabled = false
+    lineChartView.rightAxis.drawAxisLineEnabled = false
+    lineChartView.rightAxis.drawGridLinesEnabled = false
+    
+    //
+    lineChartView.xAxis.drawLabelsEnabled = false
+    lineChartView.leftAxis.drawLabelsEnabled = false
+    lineChartView.rightAxis.drawLabelsEnabled = false
+    
     lineChartView.xAxis.axisMaximum = 6
     lineChartView.xAxis.axisMinimum = 0
-    
-    lineChartView.leftAxis.drawGridLinesEnabled = false
-    lineChartView.leftAxis.drawLabelsEnabled = false
-    lineChartView.leftAxis.drawAxisLineEnabled = false
-    
-    lineChartView.rightAxis.drawLabelsEnabled = false
-    lineChartView.rightAxis.drawGridLinesEnabled = false
-    lineChartView.rightAxis.drawAxisLineEnabled = false
     
     lineChartView.legend.enabled = false
     lineChartView.animate(xAxisDuration: 0.3)
