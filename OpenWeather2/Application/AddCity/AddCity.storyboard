@@ -37,6 +37,7 @@
                     <connections>
                         <outlet property="addCitySearchBar" destination="F2k-Pa-oXo" id="ThL-C1-6s9"/>
                         <outlet property="addCityTableView" destination="7dN-o2-6nR" id="y2n-cS-CbB"/>
+                        <outlet property="searchBar" destination="F2k-Pa-oXo" id="1rm-9g-1qx"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HXp-ud-BZN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

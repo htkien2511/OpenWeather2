@@ -17,6 +17,7 @@ class AddCityViewController: UIViewController {
   // MARK: - Outlet
   @IBOutlet weak var addCityTableView: UITableView!
   @IBOutlet weak var addCitySearchBar: UISearchBar!
+  @IBOutlet weak var searchBar: UISearchBar!
   
   // MARK: - Properties
   var dataStruct: LocalJSONStruct = []
@@ -32,6 +33,31 @@ class AddCityViewController: UIViewController {
     readFileJSON()
     loadDataIntoArray()
     setUpElements()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
+  }
+  
+  @objc func keyboardWillAppear() {
+    let viewIsTap = UITapGestureRecognizer(target: self, action: #selector(viewIsTapped))
+      view.addGestureRecognizer(viewIsTap)
+  }
+
+  @objc func keyboardWillDisappear() {
+    view.gestureRecognizers?.removeAll()
+  }
+  
+  @objc func viewIsTapped() {
+    view.endEditing(true)
+  }
+
+  override func viewWillDisappear(_ animated: Bool) {
+      super.viewWillDisappear(animated)
+      NotificationCenter.default.removeObserver(self)
   }
   
   func loadDataIntoArray() {
@@ -56,16 +82,9 @@ class AddCityViewController: UIViewController {
   func setUpElements() {
     filteredData = nameCity
     
-    let viewIsTap = UITapGestureRecognizer(target: self, action: #selector(viewIsTapped))
-    view.addGestureRecognizer(viewIsTap)
-    
     addCityTableView.dataSource = self
     addCitySearchBar.delegate = self
     addCityTableView.tableFooterView = UIView()
-  }
-  
-  @objc func viewIsTapped() {
-    view.endEditing(true)
   }
 }
 
