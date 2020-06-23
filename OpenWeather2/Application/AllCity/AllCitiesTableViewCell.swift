@@ -15,6 +15,7 @@ class AllCitiesTableViewCell: UITableViewCell {
   @IBOutlet weak var country: UILabel!
   @IBOutlet weak var icon: UIImageView!
   @IBOutlet weak var temperature: UILabel!
+  @IBOutlet weak var humidity: UILabel!
   
   
   override func awakeFromNib() {
