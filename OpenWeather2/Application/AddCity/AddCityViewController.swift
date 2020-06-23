@@ -56,9 +56,16 @@ class AddCityViewController: UIViewController {
   func setUpElements() {
     filteredData = nameCity
     
+    let viewIsTap = UITapGestureRecognizer(target: self, action: #selector(viewIsTapped))
+    view.addGestureRecognizer(viewIsTap)
+    
     addCityTableView.dataSource = self
     addCitySearchBar.delegate = self
     addCityTableView.tableFooterView = UIView()
+  }
+  
+  @objc func viewIsTapped() {
+    view.endEditing(true)
   }
 }
 
