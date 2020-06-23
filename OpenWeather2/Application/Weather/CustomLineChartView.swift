@@ -26,7 +26,11 @@ class CustomLineChartView {
     lineChartDataSet.valueColors = [UIColor.white]
     lineChartDataSet.valueFont = UIFont(name: "Helvetica Neue", size: 20)!
     
-    lineChartDataSet.valueFormatter = DefaultValueFormatter(decimals: 0)
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .percent
+    formatter.multiplier = 1.0
+    formatter.percentSymbol = "°"
+    lineChartDataSet.valueFormatter = DefaultValueFormatter(formatter: formatter)
     
     //
     let lineChartData = LineChartData(dataSet: lineChartDataSet)
