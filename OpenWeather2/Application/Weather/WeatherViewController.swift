@@ -114,12 +114,13 @@ extension WeatherViewController: UICollectionViewDataSource {
       self.setUpWeather(cell, indexPath: indexPath)
       if self.isEveryDaysChecked {
         self.setUpEveryDays(cell, indexPath: indexPath)
+        self.setUpLineChartViewForEveryWeeks(cell, indexPath: indexPath)
       } else {
         self.setUpEveryHours(cell, indexPath: indexPath)
+        self.setUpLineChartViewForEveryDays(cell, indexPath: indexPath)
       }
       self.setUpdatedTime()
       self.setUpHourNDayButton(cell)
-      self.setUpLineChartView(cell, indexPath: indexPath)
     }
     
     cell.delegate = self
@@ -141,7 +142,7 @@ extension WeatherViewController: UICollectionViewDataSource {
           self.setUpWeather(cell, indexPath: indexPath)
           self.setUpdatedTime()
           self.setUpEveryHours(cell, indexPath: indexPath)
-          self.setUpLineChartView(cell, indexPath: indexPath)
+          self.setUpLineChartViewForEveryDays(cell, indexPath: indexPath)
         }
       }
     }
@@ -207,12 +208,25 @@ extension WeatherViewController: UICollectionViewDataSource {
     updatedDayLabel.text = dateFormatter.string(from: currentDate)
   }
   
-  func setUpLineChartView(_ cell: WeatherCollectionViewCell, indexPath: IndexPath) {
+  func setUpLineChartViewForEveryDays(_ cell: WeatherCollectionViewCell, indexPath: IndexPath) {
     var values: [Double] = []
     let lastedIndex = HelperWeather.getLastedIndex(data: items[indexPath.item])
     for i in 0..<6 {
       // change temperature to Integer. Ex: 26.5 => 27
       let temp = Int(self.items[indexPath.item].list[i+lastedIndex].main.temp - 273)
+      values.append(Double(temp))
+    }
+    cell.lineChartView.data = CustomLineChartView.dataChart(values: values)
+    CustomLineChartView.settingChart(lineChartView: cell.lineChartView)
+  }
+  
+  func setUpLineChartViewForEveryWeeks(_ cell: WeatherCollectionViewCell, indexPath: IndexPath) {
+    var values: [Double] = []
+    let currentIndex = HelperWeather.getLastedIndex(data: items[indexPath.item]) + 1
+    for i in 0..<6 {
+      // [list] in JSON has 40 element
+      let index = i*8 + currentIndex > 39 ? 39 : i*8 + currentIndex
+      let temp = Int(self.items[indexPath.item].list[index].main.temp - 273)
       values.append(Double(temp))
     }
     cell.lineChartView.data = CustomLineChartView.dataChart(values: values)
