@@ -25,6 +25,7 @@ class CustomLineChartView {
     lineChartDataSet.circleRadius = 4
     lineChartDataSet.valueColors = [UIColor.white]
     lineChartDataSet.valueFont = UIFont(name: "Helvetica Neue", size: 20)!
+    lineChartDataSet.valueFont = UIFont.boldSystemFont(ofSize: 18)
     
     let formatter = NumberFormatter()
     formatter.numberStyle = .percent
