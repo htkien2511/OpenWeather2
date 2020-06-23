@@ -25,7 +25,7 @@ class WeatherViewController: UIViewController {
   // MARK: - Properties
   private var items: [DataStructs] = []
   private var isEveryDaysChecked = false
-  private var existCity: [String] = ["Da Nang"]
+  private var existCity: [Int] = [1583992] // id of default city (Da Nang)
   
   // MARK: -
   override func viewDidLoad() {
@@ -300,8 +300,9 @@ extension WeatherViewController: ChangeButton {
 
 // AllCitiesTableViewController
 extension WeatherViewController: SelectedCity, DeletedCity {
-  func deletedCity(items: [DataStructs]) {
+  func deletedCity(items: [DataStructs], deletedCityID: Int) {
     self.items = items
+    self.existCity.remove(at: existCity.firstIndex(of: deletedCityID)!)
     collectionView.reloadData()
     setUpPageControl()
   }
@@ -314,11 +315,6 @@ extension WeatherViewController: SelectedCity, DeletedCity {
 // AddCityViewController
 extension WeatherViewController: AddCity {
   func addCity(name: String) {
-    // check if it had that city, go to that one
-    if IsExistCity(name: name) {
-      return
-    }
-    
     // remove space in name
     var safeName = name
     while safeName.contains(" ") {
@@ -335,6 +331,10 @@ extension WeatherViewController: AddCity {
       }
       else {
         DispatchQueue.main.async {
+          // check if it had that city, go to that one
+          if self.IsExistCity(id: data!.city.id) {
+            return
+          }
           self.items.append(data!)
           self.collectionView.reloadData()
           // go to new item
@@ -349,14 +349,14 @@ extension WeatherViewController: AddCity {
     }
   }
   
-  private func IsExistCity(name: String) -> Bool {
-    if existCity.contains(name) {
-      let index = existCity.firstIndex(of: name)!
+  private func IsExistCity(id: Int) -> Bool {
+    if existCity.contains(id) {
+      let index = existCity.firstIndex(of: id)!
       let indexPath = IndexPath(item: Int(index), section: 0)
       collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
       return true
     } else {
-      existCity.append(name)
+      existCity.append(id)
       return false
     }
   }

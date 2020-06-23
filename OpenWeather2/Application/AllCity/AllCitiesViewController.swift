@@ -12,7 +12,7 @@ protocol SelectedCity: class {
   func selectedCity(indexPath: IndexPath)
 }
 protocol DeletedCity: class {
-  func deletedCity(items: [DataStructs])
+  func deletedCity(items: [DataStructs], deletedCityID: Int)
 }
 
 private let reuseIdentifier = "allCitiesCell"
@@ -94,10 +94,11 @@ extension AllCitiesViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView,
                  trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
     let delete = UIContextualAction(style: .normal, title: "Delete") { (action, view, nil) in
+      let deletedCityID = self.items[indexPath.row].city.id
       self.items.remove(at: indexPath.row)
       self.allCitiesTableView.deleteRows(at: [indexPath], with: .automatic)
       tableView.reloadData()
-      self.deletedCityDelegate?.deletedCity(items: self.items)
+      self.deletedCityDelegate?.deletedCity(items: self.items, deletedCityID: deletedCityID)
     }
     delete.backgroundColor = #colorLiteral(red: 0, green: 0.6039215686, blue: 0.7803921569, alpha: 1)
     delete.image = #imageLiteral(resourceName: "trash")
