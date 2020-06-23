@@ -166,7 +166,7 @@ extension WeatherViewController: UICollectionViewDataSource {
     let currentIndex = HelperWeather.getLastedIndex(data: items[indexPath.item]) + 1
     
     cell.cityLabel.text = String("\(self.items[indexPath.item].city.name)")
-    cell.temperatureLabel.text = String("\(Int(self.items[indexPath.item].list[currentIndex].main.temp - 273))")
+    cell.temperatureLabel.text = String("\(Int(self.items[indexPath.item].list[currentIndex].main.temp - 273))°")
     cell.weatherDescriptionLabel.text = String("\(self.items[indexPath.item].list[currentIndex].weather[0].weatherDescription)")
     cell.humidityLabel.text = String("\(self.items[indexPath.item].list[currentIndex].main.humidity) %")
     cell.iconImageView.image = UIImage(named: self.items[indexPath.item].list[currentIndex].weather[0].icon)

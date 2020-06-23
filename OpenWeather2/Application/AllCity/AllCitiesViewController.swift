@@ -73,7 +73,7 @@ extension AllCitiesViewController: UITableViewDataSource {
     cell.country.text = items[indexPath.row].city.country
     
     let currentIndex = HelperWeather.getLastedIndex(data: items[indexPath.row]) + 1
-    cell.temperature.text = String("\(Int(self.items[indexPath.row].list[currentIndex].main.temp - 273))")
+    cell.temperature.text = String("\(Int(self.items[indexPath.row].list[currentIndex].main.temp - 273))°C")
     cell.icon.image = UIImage(named: self.items[indexPath.row].list[currentIndex].weather[0].icon)
     cell.humidity.text = String("\(self.items[indexPath.row].list[currentIndex].main.humidity) %")
     
