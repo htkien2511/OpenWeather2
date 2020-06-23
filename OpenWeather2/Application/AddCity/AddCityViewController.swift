@@ -89,6 +89,7 @@ extension AddCityViewController: UITableViewDelegate {
     // remove comma
     let nameCity = String(nameCityContainComma.dropLast())
     addCityDelegate?.addCity(name: nameCity)
+    dismiss(animated: true, completion: nil)
   }
 }
 

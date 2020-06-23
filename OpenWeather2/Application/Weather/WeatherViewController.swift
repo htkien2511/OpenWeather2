@@ -25,7 +25,7 @@ class WeatherViewController: UIViewController {
   // MARK: - Properties
   private var items: [DataStructs] = []
   private var isEveryDaysChecked = false
-  
+  private var existCity: [String] = ["Da Nang"]
   
   // MARK: -
   override func viewDidLoad() {
@@ -314,6 +314,11 @@ extension WeatherViewController: SelectedCity, DeletedCity {
 // AddCityViewController
 extension WeatherViewController: AddCity {
   func addCity(name: String) {
+    // check if it had that city, go to that one
+    if IsExistCity(name: name) {
+      return
+    }
+    
     // remove space in name
     var safeName = name
     while safeName.contains(" ") {
@@ -341,6 +346,18 @@ extension WeatherViewController: AddCity {
           self.dismiss(animated: true, completion: nil)
         }
       }
+    }
+  }
+  
+  private func IsExistCity(name: String) -> Bool {
+    if existCity.contains(name) {
+      let index = existCity.firstIndex(of: name)!
+      let indexPath = IndexPath(item: Int(index), section: 0)
+      collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+      return true
+    } else {
+      existCity.append(name)
+      return false
     }
   }
 }
