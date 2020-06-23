@@ -28,6 +28,7 @@ struct List: Codable {
 
 struct Main: Codable {
   let temp: Float
+  let humidity: Int
 }
 
 struct Weather: Codable {

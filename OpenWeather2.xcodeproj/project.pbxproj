@@ -28,6 +28,7 @@
 		7BCDD8BB249C5E9300C721AD /* capital_city_region.json in Resources */ = {isa = PBXBuildFile; fileRef = 7BCDD8BA249C5E9300C721AD /* capital_city_region.json */; };
 		7BCDD8BD249C5FF100C721AD /* LocalJSONStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDD8BC249C5FF100C721AD /* LocalJSONStruct.swift */; };
 		7BCDD92324A0556D00C721AD /* CustomLineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDD92224A0556D00C721AD /* CustomLineChartView.swift */; };
+		7BCDD92524A1A33E00C721AD /* GetWeekDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDD92424A1A33E00C721AD /* GetWeekDays.swift */; };
 		7BE41E5F2499FA94009E21E6 /* AllCities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BE41E5E2499FA94009E21E6 /* AllCities.storyboard */; };
 		7BE41E652499FE79009E21E6 /* AllCitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE41E642499FE79009E21E6 /* AllCitiesViewController.swift */; };
 		7BE41E672499FEC7009E21E6 /* AddCity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BE41E662499FEC7009E21E6 /* AddCity.storyboard */; };
@@ -71,6 +72,7 @@
 		7BCDD8BA249C5E9300C721AD /* capital_city_region.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = capital_city_region.json; sourceTree = "<group>"; };
 		7BCDD8BC249C5FF100C721AD /* LocalJSONStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalJSONStruct.swift; sourceTree = "<group>"; };
 		7BCDD92224A0556D00C721AD /* CustomLineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLineChartView.swift; sourceTree = "<group>"; };
+		7BCDD92424A1A33E00C721AD /* GetWeekDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWeekDays.swift; sourceTree = "<group>"; };
 		7BE41E5E2499FA94009E21E6 /* AllCities.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AllCities.storyboard; sourceTree = "<group>"; };
 		7BE41E642499FE79009E21E6 /* AllCitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCitiesViewController.swift; sourceTree = "<group>"; };
 		7BE41E662499FEC7009E21E6 /* AddCity.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddCity.storyboard; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 			children = (
 				7BC4CF2E2499A6ED00C31F80 /* HelperWeather.swift */,
 				7BCDAA77249B610B00C7FAFC /* UIViewExtension.swift */,
+				7BCDD92424A1A33E00C721AD /* GetWeekDays.swift */,
 			);
 			path = HelperMethod;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				7B3D7E1624975230007A44F2 /* DataStructs.swift in Sources */,
 				7BCDD92324A0556D00C721AD /* CustomLineChartView.swift in Sources */,
 				7BE41E652499FE79009E21E6 /* AllCitiesViewController.swift in Sources */,
+				7BCDD92524A1A33E00C721AD /* GetWeekDays.swift in Sources */,
 				7B3D7E1224971D44007A44F2 /* DataManager.swift in Sources */,
 				7BCDAA78249B610B00C7FAFC /* UIViewExtension.swift in Sources */,
 				7B3D7DEF24971B71007A44F2 /* OpenWeather2.xcdatamodeld in Sources */,

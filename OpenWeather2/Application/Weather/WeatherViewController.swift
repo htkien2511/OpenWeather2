@@ -150,10 +150,14 @@ extension WeatherViewController: UICollectionViewDataSource {
   
   func setUpWeather(_ cell: WeatherCollectionViewCell,
                     indexPath: IndexPath) {
+    // set up for labels
     cell.generalWeatherView.border()
     cell.cityLabel.shadow()
     cell.temperatureLabel.shadow()
     cell.weatherDescriptionLabel.shadow()
+    cell.humidityLabel.shadow()
+    cell.dateLabel.shadow()
+    cell.weekdaysLabel.shadow()
     for i in 0..<6 {
       cell.viewDetailArray![i].border()
     }
@@ -164,7 +168,18 @@ extension WeatherViewController: UICollectionViewDataSource {
     cell.cityLabel.text = String("\(self.items[indexPath.item].city.name)")
     cell.temperatureLabel.text = String("\(Int(self.items[indexPath.item].list[currentIndex].main.temp - 273))")
     cell.weatherDescriptionLabel.text = String("\(self.items[indexPath.item].list[currentIndex].weather[0].weatherDescription)")
+    cell.humidityLabel.text = String("\(self.items[indexPath.item].list[currentIndex].main.humidity) %")
     cell.iconImageView.image = UIImage(named: self.items[indexPath.item].list[currentIndex].weather[0].icon)
+    
+    // set date time
+    let currentDate = Date()
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "dd-MM-yyyy"
+    cell.dateLabel.text = dateFormatter.string(from: currentDate)
+    
+    // set weekdays
+    let weekdays = GetWeekDays.getWeekdays()
+    cell.weekdaysLabel.text = dateFormatter.weekdaySymbols[weekdays]
   }
   
   func setUpEveryHours(_ cell: WeatherCollectionViewCell,

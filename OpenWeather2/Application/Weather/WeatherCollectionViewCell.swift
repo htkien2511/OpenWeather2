@@ -23,6 +23,9 @@ class WeatherCollectionViewCell: UICollectionViewCell {
   @IBOutlet weak var everyDaysButton: UIButton!
   @IBOutlet weak var everyHoursButton: UIButton!
   @IBOutlet weak var generalWeatherView: UIView!
+  @IBOutlet weak var weekdaysLabel: UILabel!
+  @IBOutlet weak var dateLabel: UILabel!
+  @IBOutlet weak var humidityLabel: UILabel!
   
   // Line Chart View
   @IBOutlet weak var lineChartView: LineChartView!
@@ -30,7 +33,6 @@ class WeatherCollectionViewCell: UICollectionViewCell {
   weak var delegate: ChangeButton?
   
   // MARK: - Outlet Detail Weather
-  @IBOutlet var tempDetailArray: Array<UILabel>?
   @IBOutlet var iconDetailArray: Array<UIImageView>?
   @IBOutlet var dayDetailArray: Array<UILabel>?
   @IBOutlet var viewDetailArray: Array<UIView>?
