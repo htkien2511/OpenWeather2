@@ -14,6 +14,7 @@ private let reuseIdentifier = "Cell"
 class WeatherViewController: UIViewController {
   
   // MARK: - Outlet
+  @IBOutlet weak var underImageView: UIImageView!
   @IBOutlet weak var updatedDayLabel: UILabel!
   @IBOutlet weak var updatedTimeLabel: UILabel!
   @IBOutlet weak var pageControl: UIPageControl!
@@ -47,6 +48,7 @@ class WeatherViewController: UIViewController {
   
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     changePageControl()
+    //changeUnderImage()
   }
   
   func setUpCollectionView() {
@@ -61,6 +63,13 @@ class WeatherViewController: UIViewController {
   func changePageControl() {
     pageControl.currentPage = getCurrentIndex()
   }
+  
+//  func changeUnderImage() {
+//    let currentIndex = HelperWeather.getLastedIndex(data: items[getCurrentIndex()]) + 1
+//    let nameIcon = self.items[getCurrentIndex()].list[currentIndex].weather[0].icon
+//    let nameImage = GetUnderImage.getImageName(icon: nameIcon)
+//    underImageView.image = UIImage(named: nameImage)
+//  }
   
   private func getCurrentIndex() -> Int {
     return Int(collectionView.contentOffset.x / collectionView.frame.width)
@@ -111,6 +120,7 @@ extension WeatherViewController: UICollectionViewDataSource {
       self.setUpHourNDayButton(cell)
     }
     else {
+      //self.changeUnderImage()
       self.setUpWeather(cell, indexPath: indexPath)
       if self.isEveryDaysChecked {
         self.setUpEveryDays(cell, indexPath: indexPath)
@@ -143,6 +153,7 @@ extension WeatherViewController: UICollectionViewDataSource {
           self.setUpdatedTime()
           self.setUpEveryHours(cell, indexPath: indexPath)
           self.setUpLineChartViewForEveryDays(cell, indexPath: indexPath)
+          //self.changeUnderImage()
         }
       }
     }
@@ -174,7 +185,7 @@ extension WeatherViewController: UICollectionViewDataSource {
     // set date time
     let currentDate = Date()
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "dd-MM"
+    dateFormatter.dateFormat = "dd-MM-yyyy"
     cell.dateLabel.text = dateFormatter.string(from: currentDate)
     
     // set weekdays
@@ -185,8 +196,8 @@ extension WeatherViewController: UICollectionViewDataSource {
   func setUpEveryHours(_ cell: WeatherCollectionViewCell,
                          indexPath: IndexPath) {
     // highligh button if button is checking
-    cell.everyHoursButton.layer.backgroundColor = #colorLiteral(red: 0, green: 0.6039215686, blue: 0.7803921569, alpha: 1)
-    cell.everyDaysButton.layer.backgroundColor = #colorLiteral(red: 0, green: 0.6941176471, blue: 0.8941176471, alpha: 1)
+    cell.everyHoursButton.layer.backgroundColor = #colorLiteral(red: 0, green: 0.6039215686, blue: 0.7803921569, alpha: 0.55)
+    cell.everyDaysButton.layer.backgroundColor = #colorLiteral(red: 0, green: 0.6941176471, blue: 0.8941176471, alpha: 0.55)
     
     // set up detail weather every hour
     let detailEveryHour = HelperWeather.getWeatherEveryHour(data: items[indexPath.item])
@@ -199,8 +210,8 @@ extension WeatherViewController: UICollectionViewDataSource {
   
   func setUpEveryDays(_ cell: WeatherCollectionViewCell,
                          indexPath: IndexPath) {
-    cell.everyDaysButton.layer.backgroundColor = #colorLiteral(red: 0, green: 0.6039215686, blue: 0.7803921569, alpha: 1)
-    cell.everyHoursButton.layer.backgroundColor = #colorLiteral(red: 0, green: 0.6941176471, blue: 0.8941176471, alpha: 1)
+    cell.everyDaysButton.layer.backgroundColor = #colorLiteral(red: 0, green: 0.6039215686, blue: 0.7803921569, alpha: 0.55)
+    cell.everyHoursButton.layer.backgroundColor = #colorLiteral(red: 0, green: 0.6941176471, blue: 0.8941176471, alpha: 0.55)
     let currentIndex = HelperWeather.getLastedIndex(data: items[indexPath.item]) + 1
     for i in 0..<6 {
       // [list] in JSON has 40 element
