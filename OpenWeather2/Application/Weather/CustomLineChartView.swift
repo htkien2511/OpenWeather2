@@ -55,7 +55,8 @@ class CustomLineChartView {
     
     lineChartView.xAxis.axisMaximum = 6
     lineChartView.xAxis.axisMinimum = 0
-    
+    lineChartView.scaleXEnabled = false
+    lineChartView.scaleYEnabled = false
     lineChartView.legend.enabled = false
     lineChartView.animate(xAxisDuration: 0.3)
   }
