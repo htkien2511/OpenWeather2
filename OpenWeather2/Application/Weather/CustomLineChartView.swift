@@ -26,6 +26,7 @@ class CustomLineChartView {
     lineChartDataSet.valueColors = [UIColor.black]
     lineChartDataSet.colors = [UIColor.white]
     lineChartDataSet.valueFont = UIFont.boldSystemFont(ofSize: 17)
+    lineChartDataSet.highlightEnabled = false
     
     let formatter = NumberFormatter()
     formatter.numberStyle = .percent
