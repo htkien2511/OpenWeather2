@@ -58,6 +58,8 @@ class WeatherViewController: UIViewController {
   
   func setUpPageControl() {
     pageControl.numberOfPages = items.count < 1 ? 1 : items.count
+    pageControl.currentPageIndicatorTintColor = UIColor.black
+    pageControl.pageIndicatorTintColor = UIColor.white
   }
   
   func changePageControl() {
